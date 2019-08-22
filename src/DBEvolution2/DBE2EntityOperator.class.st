@@ -2,9 +2,9 @@ Class {
 	#name : #DBE2EntityOperator,
 	#superclass : #DBE2Operator,
 	#instVars : [
-		'#entity interface: #(#incomingReferences )'
+		'#entity interface: #(#incomingReferences #recommandationsFor: )'
 	],
-	#category : #DBEvolution2
+	#category : #'DBEvolution2-Core'
 }
 
 { #category : #accessing }
@@ -15,4 +15,9 @@ DBE2EntityOperator >> entity [
 { #category : #accessing }
 DBE2EntityOperator >> entity: anObject [
 	entity := anObject
+]
+
+{ #category : #accessing }
+DBE2EntityOperator >> recommandations [
+	^ self entity recommandationsFor: self
 ]

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'#reference interface: #(#source #target )'
 	],
-	#category : #DBEvolution2
+	#category : #'DBEvolution2-Core'
 }
 
 { #category : #accessing }

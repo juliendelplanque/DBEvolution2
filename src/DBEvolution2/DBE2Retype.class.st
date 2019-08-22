@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'newType'
 	],
-	#category : #DBEvolution2
+	#category : #'DBEvolution2-Core'
 }
 
 { #category : #accessing }
