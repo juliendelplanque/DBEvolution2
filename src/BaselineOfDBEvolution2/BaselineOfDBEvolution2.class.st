@@ -16,7 +16,7 @@ BaselineOfDBEvolution2 >> baseline: spec [
 				package: 'DBEvolution2-Meta' with: [ spec requires: #('PharoCodeGenerator') ].
 				
 			spec baseline: 'TypedSlot' with: [ 
-				spec repository: 'github://juliendelplanque/TypedSlot/src' ].
+				spec repository: 'github://juliendelplanque/TypedSlot:v1.x.x/src' ].
 			spec baseline: 'PharoCodeGenerator' with: [ 
 				spec repository: 'github://juliendelplanque/PharoCodeGenerator/src' ]
 		]

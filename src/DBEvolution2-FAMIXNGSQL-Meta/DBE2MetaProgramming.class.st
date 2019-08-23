@@ -4,7 +4,7 @@ Class {
 	#category : #'DBEvolution2-FAMIXNGSQL-Meta'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #metaprogramming }
 DBE2MetaProgramming class >> generateOperatorAndEntityRecommandationMethods [
 	| template templateForOperator |
 	template := self recommandationsForMethodTemplate.
@@ -32,15 +32,17 @@ DBE2MetaProgramming class >> generateOperatorAndEntityRecommandationMethods [
 				installOn: DBE2EntityOperator ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #metaprogramming }
 DBE2MetaProgramming class >> recommandationsForClassMethodTemplate [
 	^ (PCGMethodNode
 		selector: (#class asPCGTemplateParameter => [ :c | (#recommandationsFor , (c name allButFirst: 'FmxSQL' size)) asMutator ])
 		arguments: { #class asPCGTemplateParameter => [ :c | ('a',(c name allButFirst: 'FmxSQL' size)) asSymbol asPCGArgument ] })
-			beReturnedSubclassResponsibility.
+			beReturnedSubclassResponsibility;
+			protocol: 'recommandations';
+			yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #metaprogramming }
 DBE2MetaProgramming class >> recommandationsForMethodTemplate [
 	^ (PCGMethodNode
 	selector: #recommandationsFor:
