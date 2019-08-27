@@ -1,6 +1,6 @@
 Class {
 	#name : #DBE2Retype,
-	#superclass : #DBE2EntityOperator,
+	#superclass : #DBE2DelegatingRecommandations,
 	#instVars : [
 		'newType'
 	],

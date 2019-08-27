@@ -1,6 +1,6 @@
 Class {
 	#name : #DBE2DoNothing,
-	#superclass : #DBE2Operator,
+	#superclass : #DBE2EntityOperator,
 	#category : #'DBEvolution2-Core'
 }
 

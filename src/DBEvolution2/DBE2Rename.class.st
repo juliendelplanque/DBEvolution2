@@ -1,6 +1,6 @@
 Class {
 	#name : #DBE2Rename,
-	#superclass : #DBE2EntityOperator,
+	#superclass : #DBE2DelegatingRecommandations,
 	#instVars : [
 		'newName'
 	],
@@ -19,7 +19,7 @@ DBE2Rename >> newName: anObject [
 
 { #category : #recommandations }
 DBE2Rename >> recommandationsForColumn: aColumn on: operatorsStream [
-	^ aColumn incomingReferences
+	aColumn incomingReferences
 		do: [ :reference | 
 			operatorsStream
 				nextPut: (DBE2ChangeTarget reference: reference newTargetName: self newName) ]

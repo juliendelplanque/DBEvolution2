@@ -29,9 +29,9 @@ DBE2MetaProgramming class >> generateOperatorAndEntityRecommandationMethods [
 			(template substituteParametersWith: {(#class -> class)})
 				installOn: class.
 			(templateForOperator substituteParametersWith: {(#class -> class)})
-				installOn: DBE2EntityOperator.
+				installOn: DBE2DelegatingRecommandations.
 			(self recommandationsForClassMethodOnTemplate substituteParametersWith: {(#class -> class)})	
-				installOn: DBE2EntityOperator ]
+				installOn: DBE2DelegatingRecommandations ]
 ]
 
 { #category : #metaprogramming }
