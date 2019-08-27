@@ -1,5 +1,26 @@
 Class {
 	#name : #DBE2ChangeTarget,
 	#superclass : #DBE2ReferenceOperator,
+	#instVars : [
+		'newTargetName'
+	],
 	#category : #'DBEvolution2-Core'
 }
+
+{ #category : #'instance creation' }
+DBE2ChangeTarget class >> reference: reference newTargetName: newTargetName [
+	^ self new
+		reference: reference;
+		newTargetName: newTargetName;
+		yourself
+]
+
+{ #category : #accessing }
+DBE2ChangeTarget >> newTargetName [
+	^ newTargetName
+]
+
+{ #category : #accessing }
+DBE2ChangeTarget >> newTargetName: anObject [
+	newTargetName := anObject
+]

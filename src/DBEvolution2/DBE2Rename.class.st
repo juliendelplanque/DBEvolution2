@@ -16,3 +16,11 @@ DBE2Rename >> newName [
 DBE2Rename >> newName: anObject [
 	newName := anObject
 ]
+
+{ #category : #recommandations }
+DBE2Rename >> recommandationsForColumn: aColumn on: operatorsStream [
+	^ aColumn incomingReferences
+		do: [ :reference | 
+			operatorsStream
+				nextPut: (DBE2ChangeTarget reference: reference newTargetName: self newName) ]
+]

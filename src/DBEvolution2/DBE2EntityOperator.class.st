@@ -7,6 +7,13 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #'instance creation' }
+DBE2EntityOperator class >> entity: entity [
+	^ self new
+		entity: entity;
+		yourself
+]
+
 { #category : #accessing }
 DBE2EntityOperator >> entity [
 	^ entity
@@ -22,98 +29,234 @@ DBE2EntityOperator >> recommandations [
 	^ self entity recommandationsFor: self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForCheckConstraint: aCheckConstraint [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | 
+			self
+				recommandationsForCheckConstraint: aCheckConstraint
+				on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForCheckConstraint: aCheckConstraint on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForColumn: aColumn [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForColumn: aColumn on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForColumn: aColumn on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForForeignKeyConstraint: aForeignKeyConstraint [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | 
+			self
+				recommandationsForForeignKeyConstraint: aForeignKeyConstraint
+				on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForForeignKeyConstraint: aForeignKeyConstraint on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForForeignTable: aForeignTable [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForForeignTable: aForeignTable on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForForeignTable: aForeignTable on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForLocalVariable: aLocalVariable [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | 
+			self
+				recommandationsForLocalVariable: aLocalVariable
+				on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForLocalVariable: aLocalVariable on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForNamespace: aNamespace [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForNamespace: aNamespace on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForNamespace: aNamespace on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForNotNullConstraint: aNotNullConstraint [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | 
+			self
+				recommandationsForNotNullConstraint: aNotNullConstraint
+				on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForNotNullConstraint: aNotNullConstraint on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForParameter: aParameter [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForParameter: aParameter on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForParameter: aParameter on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForPrimaryKeyConstraint: aPrimaryKeyConstraint [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | 
+			self
+				recommandationsForPrimaryKeyConstraint: aPrimaryKeyConstraint
+				on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForPrimaryKeyConstraint: aPrimaryKeyConstraint on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForStoredProcedure: aStoredProcedure [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | 
+			self
+				recommandationsForStoredProcedure: aStoredProcedure
+				on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForStoredProcedure: aStoredProcedure on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForTable: aTable [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForTable: aTable on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForTable: aTable on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForTrigger: aTrigger [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForTrigger: aTrigger on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForTrigger: aTrigger on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForTriggerStoredProcedure: aTriggerStoredProcedure [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | 
+			self
+				recommandationsForTriggerStoredProcedure: aTriggerStoredProcedure
+				on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForTriggerStoredProcedure: aTriggerStoredProcedure on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForType: aType [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForType: aType on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForType: aType on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForUniqueConstraint: aUniqueConstraint [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | 
+			self
+				recommandationsForUniqueConstraint: aUniqueConstraint
+				on: operatorsStream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForUniqueConstraint: aUniqueConstraint on: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2EntityOperator >> recommandationsForView: aView [
 	<generated>
-	^ self subclassResponsibility
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForView: aView on: operatorsStream ]
+]
+
+{ #category : #recommandations }
+DBE2EntityOperator >> recommandationsForView: aView on: operatorsStream [
+	<generated>
+	self subclassResponsibility
 ]

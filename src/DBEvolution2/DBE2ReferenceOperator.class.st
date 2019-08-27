@@ -7,6 +7,13 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #'instance creation' }
+DBE2ReferenceOperator class >> reference: reference [
+	^ self new
+		reference: reference;
+		yourself
+]
+
 { #category : #accessing }
 DBE2ReferenceOperator >> reference [
 	^ reference
