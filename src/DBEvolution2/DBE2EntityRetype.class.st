@@ -1,5 +1,5 @@
 Class {
-	#name : #DBE2Retype,
+	#name : #DBE2EntityRetype,
 	#superclass : #DBE2DelegatingRecommandations,
 	#instVars : [
 		'newType'
@@ -8,11 +8,11 @@ Class {
 }
 
 { #category : #accessing }
-DBE2Retype >> newType [
+DBE2EntityRetype >> newType [
 	^ newType
 ]
 
 { #category : #accessing }
-DBE2Retype >> newType: anObject [
+DBE2EntityRetype >> newType: anObject [
 	newType := anObject
 ]

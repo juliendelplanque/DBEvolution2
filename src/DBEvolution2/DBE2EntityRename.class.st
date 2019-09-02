@@ -1,5 +1,5 @@
 Class {
-	#name : #DBE2Rename,
+	#name : #DBE2EntityRename,
 	#superclass : #DBE2DelegatingRecommandations,
 	#instVars : [
 		'newName'
@@ -8,24 +8,24 @@ Class {
 }
 
 { #category : #references }
-DBE2Rename >> incomingReferencesForColumn [
+DBE2EntityRename >> incomingReferencesForColumn [
 	^ super incomingReferencesForColumn
 		reject:
 			[ :columnReference | columnReference from isConstraint or: [ columnReference from isAlias ] ]
 ]
 
 { #category : #accessing }
-DBE2Rename >> newName [
+DBE2EntityRename >> newName [
 	^ newName
 ]
 
 { #category : #accessing }
-DBE2Rename >> newName: anObject [
+DBE2EntityRename >> newName: anObject [
 	newName := anObject
 ]
 
 { #category : #recommandations }
-DBE2Rename >> recommandationsForColumnOn: operatorsStream [
+DBE2EntityRename >> recommandationsForColumnOn: operatorsStream [
 	self incomingReferences
 		do: [ :reference | 
 			operatorsStream
