@@ -9,5 +9,5 @@ FmxSQLTable >> incomingReferencesFor: anEntityOperator [
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
 FmxSQLTable >> recommandationsFor: anEntityOperator [
 	<generated>
-	^ anEntityOperator recommandationsForTable: self
+	^ anEntityOperator recommandationsForTable
 ]

@@ -15,5 +15,5 @@ FmxSQLView >> incomingReferencesFor: anEntityOperator [
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
 FmxSQLView >> recommandationsFor: anEntityOperator [
 	<generated>
-	^ anEntityOperator recommandationsForView: self
+	^ anEntityOperator recommandationsForView
 ]

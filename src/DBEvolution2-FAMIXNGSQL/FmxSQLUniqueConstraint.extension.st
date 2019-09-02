@@ -9,5 +9,5 @@ FmxSQLUniqueConstraint >> incomingReferencesFor: anEntityOperator [
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
 FmxSQLUniqueConstraint >> recommandationsFor: anEntityOperator [
 	<generated>
-	^ anEntityOperator recommandationsForUniqueConstraint: self
+	^ anEntityOperator recommandationsForUniqueConstraint
 ]

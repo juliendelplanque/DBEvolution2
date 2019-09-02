@@ -9,5 +9,5 @@ FmxSQLCheckConstraint >> incomingReferencesFor: anEntityOperator [
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
 FmxSQLCheckConstraint >> recommandationsFor: anEntityOperator [
 	<generated>
-	^ anEntityOperator recommandationsForCheckConstraint: self
+	^ anEntityOperator recommandationsForCheckConstraint
 ]

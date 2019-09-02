@@ -15,5 +15,5 @@ FmxSQLStoredProcedure >> incomingReferencesFor: anEntityOperator [
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
 FmxSQLStoredProcedure >> recommandationsFor: anEntityOperator [
 	<generated>
-	^ anEntityOperator recommandationsForStoredProcedure: self
+	^ anEntityOperator recommandationsForStoredProcedure
 ]

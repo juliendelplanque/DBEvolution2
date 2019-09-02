@@ -9,5 +9,5 @@ FmxSQLPrimaryKeyConstraint >> incomingReferencesFor: anEntityOperator [
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
 FmxSQLPrimaryKeyConstraint >> recommandationsFor: anEntityOperator [
 	<generated>
-	^ anEntityOperator recommandationsForPrimaryKeyConstraint: self
+	^ anEntityOperator recommandationsForPrimaryKeyConstraint
 ]

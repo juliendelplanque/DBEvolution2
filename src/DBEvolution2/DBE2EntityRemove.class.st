@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #recommandations }
-DBE2EntityRemove >> recommandationsForColumn: aColumn on: operatorsStream [
+DBE2EntityRemove >> recommandationsForColumnOn: operatorsStream [
 	self incomingReferences
 		do: [ :reference | operatorsStream nextPut: (DBE2ReferenceRemove reference: reference) ]
 ]
