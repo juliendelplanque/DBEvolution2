@@ -12,238 +12,315 @@ DBE2DelegatingRecommandations class >> entity: entity [
 ]
 
 { #category : #accessing }
+DBE2DelegatingRecommandations >> incomingReferences [
+	^ self entity incomingReferencesFor: self
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForCheckConstraint [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForColumn [
+	^ self entity queryAllIncoming collect: [ :reference |
+		DBE2FmxSQLReference wrap: reference ]
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForForeignKeyConstraint [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForForeignTable [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForLocalVariable [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForNamespace [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForNotNullConstraint [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForParameter [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForPrimaryKeyConstraint [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForStoredProcedure [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForTable [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForTrigger [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForTriggerStoredProcedure [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForType [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForUniqueConstraint [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #references }
+DBE2DelegatingRecommandations >> incomingReferencesForView [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 DBE2DelegatingRecommandations >> recommandations [
 	^ self entity recommandationsFor: self
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForCheckConstraint: aCheckConstraint [
+DBE2DelegatingRecommandations >> recommandationsForCheckConstraint [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | 
-			self
-				recommandationsForCheckConstraint: aCheckConstraint
-				on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForCheckConstraintOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForCheckConstraint: aCheckConstraint on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForCheckConstraintOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForColumn: aColumn [
+DBE2DelegatingRecommandations >> recommandationsForColumn [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | self recommandationsForColumn: aColumn on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForColumnOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForColumn: aColumn on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForColumnOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForForeignKeyConstraint: aForeignKeyConstraint [
+DBE2DelegatingRecommandations >> recommandationsForForeignKeyConstraint [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | 
-			self
-				recommandationsForForeignKeyConstraint: aForeignKeyConstraint
-				on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForForeignKeyConstraintOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForForeignKeyConstraint: aForeignKeyConstraint on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForForeignKeyConstraintOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForForeignTable: aForeignTable [
+DBE2DelegatingRecommandations >> recommandationsForForeignTable [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | self recommandationsForForeignTable: aForeignTable on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForForeignTableOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForForeignTable: aForeignTable on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForForeignTableOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForLocalVariable: aLocalVariable [
+DBE2DelegatingRecommandations >> recommandationsForLocalVariable [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | 
-			self
-				recommandationsForLocalVariable: aLocalVariable
-				on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForLocalVariableOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForLocalVariable: aLocalVariable on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForLocalVariableOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForNamespace: aNamespace [
+DBE2DelegatingRecommandations >> recommandationsForNamespace [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | self recommandationsForNamespace: aNamespace on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForNamespaceOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForNamespace: aNamespace on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForNamespaceOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForNotNullConstraint: aNotNullConstraint [
+DBE2DelegatingRecommandations >> recommandationsForNotNullConstraint [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | 
-			self
-				recommandationsForNotNullConstraint: aNotNullConstraint
-				on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForNotNullConstraintOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForNotNullConstraint: aNotNullConstraint on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForNotNullConstraintOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForParameter: aParameter [
+DBE2DelegatingRecommandations >> recommandationsForParameter [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | self recommandationsForParameter: aParameter on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForParameterOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForParameter: aParameter on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForParameterOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForPrimaryKeyConstraint: aPrimaryKeyConstraint [
+DBE2DelegatingRecommandations >> recommandationsForPrimaryKeyConstraint [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | 
-			self
-				recommandationsForPrimaryKeyConstraint: aPrimaryKeyConstraint
-				on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForPrimaryKeyConstraintOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForPrimaryKeyConstraint: aPrimaryKeyConstraint on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForPrimaryKeyConstraintOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForStoredProcedure: aStoredProcedure [
+DBE2DelegatingRecommandations >> recommandationsForStoredProcedure [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | 
-			self
-				recommandationsForStoredProcedure: aStoredProcedure
-				on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForStoredProcedureOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForStoredProcedure: aStoredProcedure on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForStoredProcedureOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForTable: aTable [
+DBE2DelegatingRecommandations >> recommandationsForTable [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | self recommandationsForTable: aTable on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForTableOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForTable: aTable on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForTableOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForTrigger: aTrigger [
+DBE2DelegatingRecommandations >> recommandationsForTrigger [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | self recommandationsForTrigger: aTrigger on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForTriggerOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForTrigger: aTrigger on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForTriggerOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForTriggerStoredProcedure: aTriggerStoredProcedure [
+DBE2DelegatingRecommandations >> recommandationsForTriggerStoredProcedure [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | 
-			self
-				recommandationsForTriggerStoredProcedure: aTriggerStoredProcedure
-				on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForTriggerStoredProcedureOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForTriggerStoredProcedure: aTriggerStoredProcedure on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForTriggerStoredProcedureOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForType: aType [
+DBE2DelegatingRecommandations >> recommandationsForType [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | self recommandationsForType: aType on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForTypeOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForType: aType on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForTypeOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForUniqueConstraint: aUniqueConstraint [
+DBE2DelegatingRecommandations >> recommandationsForUniqueConstraint [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | 
-			self
-				recommandationsForUniqueConstraint: aUniqueConstraint
-				on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForUniqueConstraintOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForUniqueConstraint: aUniqueConstraint on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForUniqueConstraintOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForView: aView [
+DBE2DelegatingRecommandations >> recommandationsForView [
 	<generated>
 	^ Array
-		streamContents: [ :operatorsStream | self recommandationsForView: aView on: operatorsStream ]
+		streamContents: [ :operatorsStream | self recommandationsForViewOn: operatorsStream ]
 ]
 
 { #category : #recommandations }
-DBE2DelegatingRecommandations >> recommandationsForView: aView on: operatorsStream [
+DBE2DelegatingRecommandations >> recommandationsForViewOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]

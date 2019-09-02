@@ -2,7 +2,7 @@ Class {
 	#name : #DBE2EntityOperator,
 	#superclass : #DBE2Operator,
 	#instVars : [
-		'#entity interface: #(#incomingReferences #recommandationsFor: )'
+		'#entity interface: #(#incomingReferencesFor: #recommandationsFor: )'
 	],
 	#category : #'DBEvolution2-Core'
 }

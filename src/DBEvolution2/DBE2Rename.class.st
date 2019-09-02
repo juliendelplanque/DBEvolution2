@@ -7,6 +7,13 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #references }
+DBE2Rename >> incomingReferencesForColumn [
+	^ super incomingReferencesForColumn
+		reject:
+			[ :columnReference | columnReference from isConstraint or: [ columnReference from isAlias ] ]
+]
+
 { #category : #accessing }
 DBE2Rename >> newName [
 	^ newName
@@ -18,8 +25,8 @@ DBE2Rename >> newName: anObject [
 ]
 
 { #category : #recommandations }
-DBE2Rename >> recommandationsForColumn: aColumn on: operatorsStream [
-	aColumn incomingReferences
+DBE2Rename >> recommandationsForColumnOn: operatorsStream [
+	self incomingReferences
 		do: [ :reference | 
 			operatorsStream
 				nextPut: (DBE2ChangeTarget reference: reference newTargetName: self newName) ]

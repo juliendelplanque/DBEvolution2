@@ -6,6 +6,6 @@ Class {
 
 { #category : #recommandations }
 DBE2Remove >> recommandationsForColumn: aColumn on: operatorsStream [
-	aColumn incomingReferences
+	self incomingReferences
 		do: [ :reference | operatorsStream nextPut: (DBE2ReferenceRemove reference: reference) ]
 ]
