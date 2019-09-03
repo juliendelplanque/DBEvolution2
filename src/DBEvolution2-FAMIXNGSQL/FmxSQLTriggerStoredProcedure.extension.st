@@ -7,7 +7,8 @@ FmxSQLTriggerStoredProcedure >> incomingReferencesFor: anEntityOperator [
 ]
 
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
-FmxSQLTriggerStoredProcedure >> recommandationsFor: anEntityOperator [
+FmxSQLTriggerStoredProcedure >> recommandationsFor: anEntityOperator on: operatorsStream [
 	<generated>
-	^ anEntityOperator recommandationsForTriggerStoredProcedure
+	^ anEntityOperator
+		recommandationsForTriggerStoredProcedureOn: operatorsStream
 ]

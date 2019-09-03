@@ -103,11 +103,11 @@ DBE2MetaProgramming class >> recommandationsForClassMethodTemplate [
 { #category : #templates }
 DBE2MetaProgramming class >> recommandationsForMethodTemplate [
 	^ (PCGMethodNode
-	selector: #recommandationsFor:
-	arguments: {#anEntityOperator asPCGArgument})
+	selector: #recommandationsFor:on:
+	arguments: {#anEntityOperator asPCGArgument. #operatorsStream asPCGArgument})
 	bodyBlock: [ :body | 
 		body << (#anEntityOperator asPCGArgument
-					receiveMessage: (#class asPCGTemplateParameter => [ :c | (#recommandationsFor , (c name allButFirst: 'FmxSQL' size)) asSymbol ])) returnIt ];
+					receiveMessage: (#class asPCGTemplateParameter => [ :c | (#recommandationsFor , (c name allButFirst: 'FmxSQL' size) , #'On:') asSymbol ]) with: #operatorsStream asPCGArgument) returnIt ];
 	protocol: #'*DBEvolution2-FAMIXNGSQL';
 	yourself
 ]

@@ -7,7 +7,7 @@ FmxSQLForeignTable >> incomingReferencesFor: anEntityOperator [
 ]
 
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
-FmxSQLForeignTable >> recommandationsFor: anEntityOperator [
+FmxSQLForeignTable >> recommandationsFor: anEntityOperator on: operatorsStream [
 	<generated>
-	^ anEntityOperator recommandationsForForeignTable
+	^ anEntityOperator recommandationsForForeignTableOn: operatorsStream
 ]

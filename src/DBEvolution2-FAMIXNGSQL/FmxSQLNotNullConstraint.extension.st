@@ -7,7 +7,8 @@ FmxSQLNotNullConstraint >> incomingReferencesFor: anEntityOperator [
 ]
 
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
-FmxSQLNotNullConstraint >> recommandationsFor: anEntityOperator [
+FmxSQLNotNullConstraint >> recommandationsFor: anEntityOperator on: operatorsStream [
 	<generated>
-	^ anEntityOperator recommandationsForNotNullConstraint
+	^ anEntityOperator
+		recommandationsForNotNullConstraintOn: operatorsStream
 ]

@@ -6,7 +6,8 @@ Class {
 
 { #category : #recommandations }
 DBE2ReferenceRemove >> recommandationsForForeignKeyConstraintOn: operatorsStream [ 
-	self shouldBeImplemented.
+	operatorsStream
+		nextPut: (DBE2EntityRemove entity: self sourceEntity)
 ]
 
 { #category : #recommandations }

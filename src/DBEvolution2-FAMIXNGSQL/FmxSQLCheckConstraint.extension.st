@@ -7,7 +7,8 @@ FmxSQLCheckConstraint >> incomingReferencesFor: anEntityOperator [
 ]
 
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
-FmxSQLCheckConstraint >> recommandationsFor: anEntityOperator [
+FmxSQLCheckConstraint >> recommandationsFor: anEntityOperator on: operatorsStream [
 	<generated>
-	^ anEntityOperator recommandationsForCheckConstraint
+	^ anEntityOperator
+		recommandationsForCheckConstraintOn: operatorsStream
 ]

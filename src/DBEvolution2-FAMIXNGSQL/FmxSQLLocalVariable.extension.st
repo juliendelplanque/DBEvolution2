@@ -7,7 +7,7 @@ FmxSQLLocalVariable >> incomingReferencesFor: anEntityOperator [
 ]
 
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
-FmxSQLLocalVariable >> recommandationsFor: anEntityOperator [
+FmxSQLLocalVariable >> recommandationsFor: anEntityOperator on: operatorsStream [
 	<generated>
-	^ anEntityOperator recommandationsForLocalVariable
+	^ anEntityOperator recommandationsForLocalVariableOn: operatorsStream
 ]

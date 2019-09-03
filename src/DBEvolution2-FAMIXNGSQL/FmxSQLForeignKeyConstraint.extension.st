@@ -7,7 +7,8 @@ FmxSQLForeignKeyConstraint >> incomingReferencesFor: anEntityOperator [
 ]
 
 { #category : #'*DBEvolution2-FAMIXNGSQL' }
-FmxSQLForeignKeyConstraint >> recommandationsFor: anEntityOperator [
+FmxSQLForeignKeyConstraint >> recommandationsFor: anEntityOperator on: operatorsStream [
 	<generated>
-	^ anEntityOperator recommandationsForForeignKeyConstraint
+	^ anEntityOperator
+		recommandationsForForeignKeyConstraintOn: operatorsStream
 ]
