@@ -1,3 +1,6 @@
+"
+Removing an entity is defined as removing #entity from its container and remove all references to it.
+"
 Class {
 	#name : #DBE2EntityRemove,
 	#superclass : #DBE2DelegatingRecommandations,

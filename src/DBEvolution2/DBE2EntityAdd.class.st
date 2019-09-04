@@ -1,3 +1,6 @@
+"
+Adding an #entity is defined as adding it as children of #container.
+"
 Class {
 	#name : #DBE2EntityAdd,
 	#superclass : #DBE2DelegatingRecommandations,

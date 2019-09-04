@@ -1,3 +1,6 @@
+"
+Renaming an #entity is defined as actually changing its name and adapt references to it.
+"
 Class {
 	#name : #DBE2EntityRename,
 	#superclass : #DBE2DelegatingRecommandations,
