@@ -81,8 +81,8 @@ DBE2DelegatingRecommandations >> incomingReferencesForStoredProcedure [
 
 { #category : #references }
 DBE2DelegatingRecommandations >> incomingReferencesForTable [
-	<generated>
-	^ self subclassResponsibility
+	^ self entity queryAllIncoming collect: [ :reference |
+		DBE2FmxSQLReference wrap: reference ]
 ]
 
 { #category : #references }

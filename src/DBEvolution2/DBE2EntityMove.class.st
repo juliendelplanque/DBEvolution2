@@ -19,3 +19,9 @@ DBE2EntityMove >> newContainer [
 DBE2EntityMove >> newContainer: anObject [
 	newContainer := anObject
 ]
+
+{ #category : #recommandations }
+DBE2EntityMove >> recommandationsForTableOn: operatorsStream [
+	self incomingReferences do: [ :reference |
+		self halt ]
+]
