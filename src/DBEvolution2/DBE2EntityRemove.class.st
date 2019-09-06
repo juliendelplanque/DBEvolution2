@@ -7,6 +7,12 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #visiting }
+DBE2EntityRemove >> acceptVisitor: anOperatorVisitor [
+	<generated>
+	^ anOperatorVisitor visitEntityRemove: self
+]
+
 { #category : #references }
 DBE2EntityRemove >> incomingReferencesForForeignKeyConstraint [
 	"There is no entity referencing a foreign key."

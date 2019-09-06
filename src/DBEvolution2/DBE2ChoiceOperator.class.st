@@ -8,6 +8,12 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #visiting }
+DBE2ChoiceOperator >> acceptVisitor: anOperatorVisitor [
+	<generated>
+	^ anOperatorVisitor visitChoiceOperator: self
+]
+
 { #category : #accessing }
 DBE2ChoiceOperator >> chosenRecommandation [
 	^ chosenRecommandation
@@ -16,6 +22,11 @@ DBE2ChoiceOperator >> chosenRecommandation [
 { #category : #accessing }
 DBE2ChoiceOperator >> chosenRecommandation: anObject [
 	chosenRecommandation := anObject
+]
+
+{ #category : #testing }
+DBE2ChoiceOperator >> isChoiceMade [
+	^ self chosenRecommandation isNotNil
 ]
 
 { #category : #accessing }
@@ -30,7 +41,7 @@ DBE2ChoiceOperator >> possibleRecommandations: anObject [
 
 { #category : #accessing }
 DBE2ChoiceOperator >> recommandations [
-	self chosenRecommandation
-		ifNil: [ DBE2ChoiceRequired signalForOperator: self ].
+	self isChoiceMade
+		ifFalse: [ DBE2ChoiceRequired signalForOperator: self ].
 	^ self chosenRecommandation recommandations
 ]

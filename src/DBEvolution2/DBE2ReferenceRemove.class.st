@@ -4,6 +4,12 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #visiting }
+DBE2ReferenceRemove >> acceptVisitor: anOperatorVisitor [
+	<generated>
+	^ anOperatorVisitor visitReferenceRemove: self
+]
+
 { #category : #recommandations }
 DBE2ReferenceRemove >> recommandationsForForeignKeyConstraintOn: operatorsStream [ 
 	operatorsStream

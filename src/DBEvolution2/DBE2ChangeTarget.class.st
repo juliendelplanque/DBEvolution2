@@ -15,6 +15,12 @@ DBE2ChangeTarget class >> reference: reference newTargetName: newTargetName [
 		yourself
 ]
 
+{ #category : #visiting }
+DBE2ChangeTarget >> acceptVisitor: anOperatorVisitor [
+	<generated>
+	^ anOperatorVisitor visitChangeTarget: self
+]
+
 { #category : #accessing }
 DBE2ChangeTarget >> newTargetName [
 	^ newTargetName

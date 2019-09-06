@@ -7,6 +7,12 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #visiting }
+DBE2EntityRetype >> acceptVisitor: anOperatorVisitor [
+	<generated>
+	^ anOperatorVisitor visitEntityRetype: self
+]
+
 { #category : #accessing }
 DBE2EntityRetype >> newType [
 	^ newType

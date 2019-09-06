@@ -120,6 +120,11 @@ DBE2DelegatingRecommandations >> recommandations [
 	^ recommandations ifNil: [ recommandations := Array streamContents: [ :stream | self entity recommandationsFor: self on: stream ] ]
 ]
 
+{ #category : #accessing }
+DBE2DelegatingRecommandations >> recommandations: anObject [
+	recommandations := anObject
+]
+
 { #category : #recommandations }
 DBE2DelegatingRecommandations >> recommandationsForCheckConstraintOn: operatorsStream [
 	<generated>

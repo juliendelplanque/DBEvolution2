@@ -10,6 +10,12 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #visiting }
+DBE2EntityRename >> acceptVisitor: anOperatorVisitor [
+	<generated>
+	^ anOperatorVisitor visitEntityRename: self
+]
+
 { #category : #references }
 DBE2EntityRename >> incomingReferencesForColumn [
 	^ super incomingReferencesForColumn

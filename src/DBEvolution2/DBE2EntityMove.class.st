@@ -10,6 +10,12 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #visiting }
+DBE2EntityMove >> acceptVisitor: anOperatorVisitor [
+	<generated>
+	^ anOperatorVisitor visitEntityMove: self
+]
+
 { #category : #accessing }
 DBE2EntityMove >> newContainer [
 	^ newContainer
