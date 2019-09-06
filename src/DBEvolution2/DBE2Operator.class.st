@@ -4,6 +4,11 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #enumerating }
+DBE2Operator >> flattened [
+	^ DBE2OperatorsFlattener flatten: self
+]
+
 { #category : #testing }
 DBE2Operator >> hasChoiceToMake [
 	"Returns true if the tree of recommandations contains a ChoiceOperator.

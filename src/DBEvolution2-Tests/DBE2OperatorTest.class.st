@@ -8,6 +8,29 @@ Class {
 }
 
 { #category : #test }
+DBE2OperatorTest >> testFlattened [
+	| op1 op2 op3 op4 |
+	op1 := DBE2MockOperator new.
+	op2 := DBE2MockOperator new.
+	op3 := DBE2MockOperator new.
+	op4 := DBE2MockOperator new.
+	op1
+		recommandations:
+			{(op2
+				recommandations: {op3};
+				yourself).
+			op4};
+		yourself.
+	self
+		assert: op1 flattened asArray
+		equals:
+			{op3.
+			op2.
+			op4.
+			op1}
+]
+
+{ #category : #test }
 DBE2OperatorTest >> testHasChoiceToMake [
 	| operator |
 	operator := (DBE2MockOperator new)

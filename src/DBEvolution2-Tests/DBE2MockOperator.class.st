@@ -18,6 +18,14 @@ DBE2MockOperator >> initialize [
 	self recommandations: #()
 ]
 
+{ #category : #printing }
+DBE2MockOperator >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPut: $(.
+	self hash printOn: aStream.
+	aStream nextPut: $)
+]
+
 { #category : #accessing }
 DBE2MockOperator >> recommandations [
 	^ recommandations
