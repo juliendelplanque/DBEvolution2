@@ -1,3 +1,7 @@
+"
+I am an operator that does absolutly nothing.
+I am an implementation of the null-object design pattern.
+"
 Class {
 	#name : #DBE2DoNothing,
 	#superclass : #DBE2EntityOperator,
