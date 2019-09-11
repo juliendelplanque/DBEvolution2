@@ -15,6 +15,7 @@ BaselineOfDBEvolution2 >> baseline: spec [
 				package: 'DBEvolution2-Tests' with: [ spec requires: #('DBEvolution2') ];
 				package: 'DBEvolution2-DDL';
 				package: 'DBEvolution2-DDL-Tests' with: [ spec requires: #('DBEvolution2-DDL') ];
+				package: 'DBEvolution2-Aggregators' with: [ spec requires: #('DBEvolution2') ];
 				package: 'DBEvolution2-FAMIXNGSQL' with: [ spec requires: #('DBEvolution2') ];
 				package: 'DBEvolution2-FAMIXNGSQL-Meta' with: [ spec requires: #('PharoCodeGenerator') ].
 				
