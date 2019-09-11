@@ -17,6 +17,11 @@ DBE2Operator >> hasChoiceToMake [
 	^ DBE2HasChoiceVisitor hasChoice: self
 ]
 
+{ #category : #testing }
+DBE2Operator >> isDoNothing [
+	^ false
+]
+
 { #category : #accessing }
 DBE2Operator >> recommandations [
 	"Returns operators that are recommanded to apply the current operator correctly."
