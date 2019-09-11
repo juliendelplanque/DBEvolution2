@@ -13,7 +13,7 @@ Class {
 	#category : #'DBEvolution2-Aggregators'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #aggregating }
 DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
 	|aggregatedOperators|
 	"1. Flatten operators as a collection and remove 'do nothing'."
@@ -22,7 +22,7 @@ DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
 	aggregatedOperators := OrderedCollection new.
 	((self operators select: #isChangeTarget) groupedBy: #sourcedBelonger) keysAndValuesDo: [ :sourcedBelonger :references |
 		|updatedSourceCode|
-		updatedSourceCode := self applyChangeTargets: references to: sourcedBelonger source.
+		updatedSourceCode := sourcedBelonger source applyChangeTargets: references.
 		aggregatedOperators 
 			add: (DBE2ModifySourceCode new
 						entity: sourcedBelonger;
@@ -31,25 +31,6 @@ DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
 	aggregatedOperators do: [ :assoc |
 		operators at: (self operators detectIndex: [ :op | assoc value includes: op ]) put: assoc key.
 		operators := (self operators reject: [ :op | assoc value includes: op ]) ]
-]
-
-{ #category : #'as yet unclassified' }
-DBE2DecisionToAggregatedOperators >> applyChangeTargets: changeTargets to: sourceCode [
-	"To be sure the order stays the same in this method."
-	| orderedReferenceRenamings lastIndex |
-	orderedReferenceRenamings := changeTargets asOrderedCollection sorted: [ :a :b | a start < b start ].
-	lastIndex := 1.
-	^ String streamContents: [ :stream |
-		orderedReferenceRenamings do: [ :referenceRename |
-			(referenceRename start > lastIndex)
-				ifTrue: [ 
-					stream << (sourceCode copyFrom: lastIndex to: referenceRename start - 1).
-					lastIndex := referenceRename start ].
-			referenceRename start = lastIndex
-				ifTrue: [ stream << referenceRename newReferenceName ].
-			lastIndex := referenceRename stop + 1 ].
-		lastIndex < sourceCode size
-			ifTrue: [ stream << (sourceCode copyFrom: lastIndex to: sourceCode size) ] ]
 ]
 
 { #category : #accessing }
