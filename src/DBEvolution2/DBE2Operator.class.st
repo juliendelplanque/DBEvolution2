@@ -18,6 +18,11 @@ DBE2Operator >> hasChoiceToMake [
 ]
 
 { #category : #testing }
+DBE2Operator >> isChangeTarget [
+	^ false
+]
+
+{ #category : #testing }
 DBE2Operator >> isDoNothing [
 	^ false
 ]

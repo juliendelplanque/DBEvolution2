@@ -21,6 +21,11 @@ DBE2ChangeTarget >> acceptVisitor: anOperatorVisitor [
 	^ anOperatorVisitor visitChangeTarget: self
 ]
 
+{ #category : #testing }
+DBE2ChangeTarget >> isChangeTarget [
+	^ true
+]
+
 { #category : #accessing }
 DBE2ChangeTarget >> newTargetName [
 	^ newTargetName
