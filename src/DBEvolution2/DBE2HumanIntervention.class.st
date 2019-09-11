@@ -1,3 +1,6 @@
+"
+I am an operator that mark that the process expects a human to perform a change on the database.
+"
 Class {
 	#name : #DBE2HumanIntervention,
 	#superclass : #DBE2EntityOperator,
