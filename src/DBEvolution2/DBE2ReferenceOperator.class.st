@@ -130,3 +130,13 @@ DBE2ReferenceOperator >> reference: anObject [
 DBE2ReferenceOperator >> sourceEntity [
 	^ self reference from
 ]
+
+{ #category : #accessing }
+DBE2ReferenceOperator >> start [
+	^ self reference start
+]
+
+{ #category : #accessing }
+DBE2ReferenceOperator >> stop [
+	^ self reference stop
+]
