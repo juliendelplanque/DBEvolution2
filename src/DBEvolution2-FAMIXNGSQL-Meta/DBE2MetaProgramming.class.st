@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #accessing }
-DBE2MetaProgramming class >> classesForGeneration [
+DBE2MetaProgramming class >> classesForEntityOperatorGeneration [
 	^ {FmxSQLTable.
 	FmxSQLColumn.
 	FmxSQLCheckConstraint.
@@ -24,12 +24,33 @@ DBE2MetaProgramming class >> classesForGeneration [
 	FmxSQLLocalVariable}
 ]
 
+{ #category : #accessing }
+DBE2MetaProgramming class >> classesForReferenceOperatorGeneration [
+	^ self classesForEntityOperatorGeneration , (FmxSQLClause allSubclasses select: [ :c | c subclasses isEmpty ])
+]
+
+{ #category : #metaprogramming }
+DBE2MetaProgramming class >> generateEntityOperatorAndEntityRecommandationMethods [
+	| template templateForOperator |
+	template := self recommandationsForMethodTemplate.
+	templateForOperator := self recommandationsForClassMethodTemplate.
+	self classesForEntityOperatorGeneration
+		do: [ :class | 
+			(template substituteParametersWith: {(#class -> class)})
+				installOn: class.
+			(templateForOperator substituteParametersWith: {(#class -> class)})
+				installOn: DBE2DelegatingRecommandations.
+			(self recommandationsForClassMethodOnTemplate
+				substituteParametersWith: {(#class -> class)})
+				installOn: DBE2DelegatingRecommandations. ]
+]
+
 { #category : #metaprogramming }
 DBE2MetaProgramming class >> generateOperatorAndEntityIncomingReferencesMethods [
 	| template templateForOperator |
 	template := self incomingReferencesForMethodTemplate .
 	templateForOperator := self incomingReferencesForClassMethodTemplate.
-	self classesForGeneration
+	self classesForEntityOperatorGeneration
 		do: [ :class | 
 			(template substituteParametersWith: {(#class -> class)})
 				installOn: class.
@@ -38,20 +59,18 @@ DBE2MetaProgramming class >> generateOperatorAndEntityIncomingReferencesMethods 
 ]
 
 { #category : #metaprogramming }
-DBE2MetaProgramming class >> generateOperatorAndEntityRecommandationMethods [
+DBE2MetaProgramming class >> generateReferenceOperatorAndEntityRecommandationMethods [
 	| template templateForOperator |
 	template := self recommandationsForMethodTemplate.
 	templateForOperator := self recommandationsForClassMethodTemplate.
-	self classesForGeneration
+	self classesForReferenceOperatorGeneration
 		do: [ :class | 
 			(template substituteParametersWith: {(#class -> class)})
 				installOn: class.
 			(templateForOperator substituteParametersWith: {(#class -> class)})
-				installOn: DBE2DelegatingRecommandations;
 				installOn: DBE2ReferenceOperator.
 			(self recommandationsForClassMethodOnTemplate
 				substituteParametersWith: {(#class -> class)})
-				installOn: DBE2DelegatingRecommandations;
 				installOn: DBE2ReferenceOperator ]
 ]
 
