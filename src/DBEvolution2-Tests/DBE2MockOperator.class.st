@@ -19,11 +19,8 @@ DBE2MockOperator >> initialize [
 ]
 
 { #category : #printing }
-DBE2MockOperator >> printOn: aStream [
-	super printOn: aStream.
-	aStream nextPut: $(.
+DBE2MockOperator >> innerPrintOn: aStream [
 	self hash printOn: aStream.
-	aStream nextPut: $)
 ]
 
 { #category : #accessing }

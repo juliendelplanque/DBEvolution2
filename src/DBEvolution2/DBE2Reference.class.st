@@ -10,6 +10,11 @@ DBE2Reference >> from [
 ]
 
 { #category : #accessing }
+DBE2Reference >> sourceAnchor [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 DBE2Reference >> to [
 	^ self subclassResponsibility
 ]

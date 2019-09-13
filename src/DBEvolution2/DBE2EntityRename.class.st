@@ -10,6 +10,14 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #'instance creation' }
+DBE2EntityRename class >> entity: aFmxSQLColumn newName: aString [ 
+	^ self new
+		entity: aFmxSQLColumn;
+		newName: aString;
+		yourself
+]
+
 { #category : #visiting }
 DBE2EntityRename >> acceptVisitor: anOperatorVisitor [
 	<generated>

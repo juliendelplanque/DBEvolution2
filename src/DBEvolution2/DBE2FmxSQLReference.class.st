@@ -20,6 +20,11 @@ DBE2FmxSQLReference >> from [
 ]
 
 { #category : #accessing }
+DBE2FmxSQLReference >> sourceAnchor [
+	^ self wrappedReference sourceAnchor
+]
+
+{ #category : #accessing }
 DBE2FmxSQLReference >> to [
 	^ self wrappedReference to
 ]

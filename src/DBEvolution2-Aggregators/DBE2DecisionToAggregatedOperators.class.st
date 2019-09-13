@@ -18,7 +18,7 @@ DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
 	|aggregatedOperators|
 	"1. Flatten operators as a collection and remove 'do nothing'."
 	operators := rootDecisionOperator flattened reject: #isDoNothing.
-	"2. Aggregate."
+	"2. Aggregate change target reference operators."
 	aggregatedOperators := OrderedCollection new.
 	((self operators select: #isChangeTarget) groupedBy: #sourcedBelonger) keysAndValuesDo: [ :sourcedBelonger :references |
 		|updatedSourceCode|
@@ -29,8 +29,8 @@ DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
 						newSourceCode: updatedSourceCode;
 						yourself) -> references ].
 	aggregatedOperators do: [ :assoc |
-		operators at: (self operators detectIndex: [ :op | assoc value includes: op ]) put: assoc key.
-		operators := (self operators reject: [ :op | assoc value includes: op ]) ]
+		operators at: (operators detectIndex: [ :op | assoc value includes: op ]) put: assoc key.
+		operators := (operators reject: [ :op | assoc value includes: op ]) ]
 ]
 
 { #category : #accessing }

@@ -486,3 +486,10 @@ DBE2ReferenceOperator >> start [
 DBE2ReferenceOperator >> stop [
 	^ self reference stop
 ]
+
+{ #category : #accessing }
+DBE2ReferenceOperator >> substringToRewrite [
+	^ self reference sourceAnchor entity source
+			copyFrom: self reference sourceAnchor start
+			to: self reference sourceAnchor end
+]
