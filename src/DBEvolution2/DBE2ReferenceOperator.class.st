@@ -488,6 +488,12 @@ DBE2ReferenceOperator >> sourceAnchorStart [
 ]
 
 { #category : #accessing }
+DBE2ReferenceOperator >> sourceCodeChangeAsText [
+	"Returns a Text object with some attributes to visualize what the operator will do."
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 DBE2ReferenceOperator >> sourceEntity [
 	^ self reference from
 ]

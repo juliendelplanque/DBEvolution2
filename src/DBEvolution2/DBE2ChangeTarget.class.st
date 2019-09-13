@@ -52,3 +52,31 @@ DBE2ChangeTarget >> recommandationsForGroupByClauseOn: operatorsStream [
 DBE2ChangeTarget >> recommandationsForTriggerStoredProcedureOn: operatorsStream [ 
 	"Do nothing on purpose, once the change target operator has been applied, the code will be fixed."
 ]
+
+{ #category : #accessing }
+DBE2ChangeTarget >> sourceCodeChangeAsText [
+	| entitySourceCode text |
+	entitySourceCode := self sourceAnchor entity sourceCodeAsText.
+	text := (entitySourceCode copyFrom: 1 to: self sourceAnchorEnd) ,
+		self newTargetName ,
+		(entitySourceCode
+			copyFrom: self sourceAnchorEnd + 1
+			to: entitySourceCode size).
+	text
+		addAttribute: TextEmphasis struckOut
+			from: self sourceAnchor start
+			to: self sourceAnchorEnd;
+		addAttribute: TextEmphasis bold
+			from: self sourceAnchor start
+			to: self sourceAnchorEnd;
+		addAttribute: (TextColor color: Color red)
+			from: self sourceAnchor start
+			to: self sourceAnchorEnd;
+		addAttribute: TextEmphasis bold
+			from: self sourceAnchorEnd + 1
+			to: self sourceAnchorEnd + self newTargetName size;
+		addAttribute: (TextColor color: Color green)
+			from: self sourceAnchorEnd + 1
+			to: self sourceAnchorEnd + self newTargetName size.
+	^ text
+]
