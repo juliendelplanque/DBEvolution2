@@ -473,6 +473,21 @@ DBE2ReferenceOperator >> reference: anObject [
 ]
 
 { #category : #accessing }
+DBE2ReferenceOperator >> sourceAnchor [
+	^ self reference sourceAnchor
+]
+
+{ #category : #accessing }
+DBE2ReferenceOperator >> sourceAnchorEnd [
+	^ self sourceAnchor end
+]
+
+{ #category : #accessing }
+DBE2ReferenceOperator >> sourceAnchorStart [
+	^ self sourceAnchor start
+]
+
+{ #category : #accessing }
 DBE2ReferenceOperator >> sourceEntity [
 	^ self reference from
 ]
@@ -489,7 +504,7 @@ DBE2ReferenceOperator >> stop [
 
 { #category : #accessing }
 DBE2ReferenceOperator >> substringToRewrite [
-	^ self reference sourceAnchor entity source
-			copyFrom: self reference sourceAnchor start
-			to: self reference sourceAnchor end
+	^ self sourceAnchor entity source
+			copyFrom: self sourceAnchor start
+			to: self sourceAnchor end
 ]

@@ -27,6 +27,12 @@ DBE2SimulatedFmxSQLReference >> from: anObject [
 ]
 
 { #category : #accessing }
+DBE2SimulatedFmxSQLReference >> sourceAnchor [
+	"There is no source anchor for a simulated reference."
+	FmxSQLNoSourceAnchor signal: self
+]
+
+{ #category : #accessing }
 DBE2SimulatedFmxSQLReference >> to [
 	^ to
 ]
