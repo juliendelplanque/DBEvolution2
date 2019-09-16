@@ -14,6 +14,11 @@ DBE2FmxSQLReference class >> wrap: aFmxSQLReference [
 		yourself
 ]
 
+{ #category : #acessing }
+DBE2FmxSQLReference >> belongsToGroup [
+	^ self wrappedReference belongsToGroup
+]
+
 { #category : #accessing }
 DBE2FmxSQLReference >> from [
 	^ self wrappedReference from

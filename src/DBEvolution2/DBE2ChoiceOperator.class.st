@@ -8,6 +8,14 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #'instance creation' }
+DBE2ChoiceOperator class >> possibleRecommandations: possibleRecommandations [
+	<generated>
+	^ self new
+		possibleRecommandations: possibleRecommandations;
+		yourself
+]
+
 { #category : #visiting }
 DBE2ChoiceOperator >> acceptVisitor: anOperatorVisitor [
 	<generated>

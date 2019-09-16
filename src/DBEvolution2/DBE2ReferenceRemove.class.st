@@ -10,6 +10,11 @@ DBE2ReferenceRemove >> acceptVisitor: anOperatorVisitor [
 	^ anOperatorVisitor visitReferenceRemove: self
 ]
 
+{ #category : #printing }
+DBE2ReferenceRemove >> innerPrintOn: aStream [
+	aStream print: self substringToRewrite
+]
+
 { #category : #recommandations }
 DBE2ReferenceRemove >> recommandationsForForeignKeyConstraintOn: operatorsStream [ 
 	operatorsStream

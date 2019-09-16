@@ -4,6 +4,11 @@ Class {
 	#category : #'DBEvolution2-Model'
 }
 
+{ #category : #acessing }
+DBE2Reference >> belongsToGroup [
+	^ nil
+]
+
 { #category : #accessing }
 DBE2Reference >> from [
 	^ self subclassResponsibility

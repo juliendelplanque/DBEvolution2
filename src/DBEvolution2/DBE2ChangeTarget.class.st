@@ -49,6 +49,21 @@ DBE2ChangeTarget >> recommandationsForGroupByClauseOn: operatorsStream [
 ]
 
 { #category : #recommandations }
+DBE2ChangeTarget >> recommandationsForSelectClauseOn: operatorsStream [ 
+	self reference belongsToGroup
+		ifNotNil: [ ^ self ].
+	
+	"If the reference does not belong to a reference group and is in a SELECT clause, it means there are two possiblities:
+		- either the user decide to alias the rewritten reference with the old name. That way, users of the SELECT query are not impacted by the change.
+		- or the user decide to rewrite the reference and discard the old name. In that case, the users of the SELECT query need to be updated to use the new name.
+	"
+	self halt.
+	operatorsStream nextPut: (DBE2ChoiceOperator possibleRecommandations: { 
+		self flag: #TODO. "Create alias operator."
+		 })
+]
+
+{ #category : #recommandations }
 DBE2ChangeTarget >> recommandationsForTriggerStoredProcedureOn: operatorsStream [ 
 	"Do nothing on purpose, once the change target operator has been applied, the code will be fixed."
 ]
