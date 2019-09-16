@@ -5,7 +5,7 @@ DBE2ReferenceOperator >> gtPreviewIn: composite [
 	<gtInspectorPresentationOrder: -1>
 	^ composite text
 		title: 'Preview';
-		display: [ self reference sourceAnchor ];
+		display: [ self reference ];
 		format: [ :t | 
 			[
 				self sourceCodeChangeAsText
