@@ -9,18 +9,6 @@ DBE2Operator >> flattened [
 	^ DBE2OperatorsFlattener flatten: self
 ]
 
-{ #category : #'as yet unclassified' }
-DBE2Operator >> gtEntitiesIn: composite [
-	<gtInspectorPresentationOrder: 0>
-	^ composite fastTable
-		title: 'Recommandations';
-		display: [ self recommandations ];
-		enableElementIndex;
-		wantsAutomaticRefresh: true;
-		column: 'Index' evaluated: [ :value :ibdex | ibdex asString ] width: 50;
-		column: 'Entity' evaluated: [ :value | GTObjectPrinter asTruncatedTextFrom: value ]
-]
-
 { #category : #testing }
 DBE2Operator >> hasChoiceToMake [
 	"Returns true if the tree of recommandations contains a ChoiceOperator.
