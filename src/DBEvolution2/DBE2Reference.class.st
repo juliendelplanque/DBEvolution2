@@ -14,6 +14,11 @@ DBE2Reference >> from [
 	^ self subclassResponsibility
 ]
 
+{ #category : #testing }
+DBE2Reference >> isColumnReference [
+	^ self subclassResponsibility
+]
+
 { #category : #accessing }
 DBE2Reference >> sourceAnchor [
 	^ self subclassResponsibility

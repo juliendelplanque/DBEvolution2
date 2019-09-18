@@ -24,6 +24,11 @@ DBE2FmxSQLReference >> from [
 	^ self wrappedReference from
 ]
 
+{ #category : #testing }
+DBE2FmxSQLReference >> isColumnReference [
+	^ self wrappedReference isColumnReference
+]
+
 { #category : #accessing }
 DBE2FmxSQLReference >> sourceAnchor [
 	^ self wrappedReference sourceAnchor

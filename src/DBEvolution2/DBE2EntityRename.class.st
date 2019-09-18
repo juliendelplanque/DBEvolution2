@@ -45,7 +45,7 @@ DBE2EntityRename >> newName: anObject [
 DBE2EntityRename >> recommandationsForColumnOn: operatorsStream [
 	self incomingReferences
 		do: [ :reference | 
-			(self entity isColumnReference and: [ self entity source isAnyBelongerSourced and: [ self entity source sourcedBelonger isView and: [ self entity source isSelectClause ] ] ])
+			(reference isColumnReference and: [ reference from isAnyBelongerSourced and: [ reference from sourcedBelonger isView and: [ reference from isSelectClause ] ] ])
 				ifTrue: [ 
 					"If the reference does not belong to a reference group and is in a SELECT clause,
 					 it means there are two possiblities:
