@@ -26,6 +26,12 @@ DBE2OperatorVisitor >> visitChoiceOperator: aChoiceOperator [
 ]
 
 { #category : #visiting }
+DBE2OperatorVisitor >> visitDBE2AliasAndChangeTarget: aDBE2AliasAndChangeTarget [
+	<generated>
+	^ self subclassResponsibility
+]
+
+{ #category : #visiting }
 DBE2OperatorVisitor >> visitDoNothing: aDoNothing [
 	^ self visitOperator: aDoNothing
 ]
