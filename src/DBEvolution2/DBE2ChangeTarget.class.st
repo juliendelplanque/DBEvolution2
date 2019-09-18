@@ -58,6 +58,11 @@ DBE2ChangeTarget >> recommandationsForTriggerStoredProcedureOn: operatorsStream 
 	"Do nothing on purpose, once the change target operator has been applied, the code will be fixed."
 ]
 
+{ #category : #recommandations }
+DBE2ChangeTarget >> recommandationsForWhereClauseOn: operatorsStream [
+	"Do nothing on purpose, once the change target operator has been applied, the code will be fixed."
+]
+
 { #category : #accessing }
 DBE2ChangeTarget >> sourceCodeChangeAsText [
 	| entitySourceCode text |
