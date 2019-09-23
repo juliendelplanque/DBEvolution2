@@ -29,6 +29,11 @@ DBE2EntityRemove >> incomingReferencesForPrimaryKeyConstraint [
 			DBE2FmxSQLReference wrap: ref ] ]) flattened
 ]
 
+{ #category : #printing }
+DBE2EntityRemove >> innerPrintOn: aStream [
+	aStream print: self entity name
+]
+
 { #category : #recommandations }
 DBE2EntityRemove >> recommandToRemoveIncomingReferencesOn: operatorsStream [
 	self incomingReferences

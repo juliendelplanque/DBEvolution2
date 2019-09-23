@@ -31,6 +31,13 @@ DBE2EntityRename >> incomingReferencesForColumn [
 			[ :columnReference | columnReference from isConstraint or: [ columnReference from isAlias ] ]
 ]
 
+{ #category : #printing }
+DBE2EntityRename >> innerPrintOn: aStream [
+	aStream print: self entity name.
+	aStream nextPutAll: ' -> '.
+	aStream print: self newName
+]
+
 { #category : #accessing }
 DBE2EntityRename >> newName [
 	^ newName
@@ -45,7 +52,7 @@ DBE2EntityRename >> newName: anObject [
 DBE2EntityRename >> recommandationsForColumnOn: operatorsStream [
 	self incomingReferences
 		do: [ :reference | 
-			(reference isColumnReference and: [ reference from isAnyBelongerSourced and: [ reference from sourcedBelonger isView and: [ reference from isSelectClause ] ] ])
+			(reference isColumnReference and: [ reference from isAnyBelongerSourced and: [ reference from sourcedBelonger isView and: [ reference from isSelectClause and: [ reference belongsToGroup isNil ] ] ] ])
 				ifTrue: [ 
 					"If the reference does not belong to a reference group and is in a SELECT clause,
 					 it means there are two possiblities:

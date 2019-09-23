@@ -32,6 +32,16 @@ DBE2ChoiceOperator >> chosenRecommandation: anObject [
 	chosenRecommandation := anObject
 ]
 
+{ #category : #printing }
+DBE2ChoiceOperator >> innerPrintOn: aStream [
+	self isChoiceMade
+		ifFalse: [ 
+			aStream nextPutAll: 'Choice is to be made.'.
+			^ self ].
+		
+	aStream print: self chosenRecommandation 
+]
+
 { #category : #testing }
 DBE2ChoiceOperator >> isChoiceMade [
 	^ self chosenRecommandation isNotNil

@@ -44,13 +44,28 @@ DBE2ChangeTarget >> newTargetName: anObject [
 ]
 
 { #category : #recommandations }
+DBE2ChangeTarget >> recommandationsForFromClauseOn: aWriteStream [ 
+	"Do nothing on purpose, once the change target operator has been applied, the code will be fixed."
+]
+
+{ #category : #recommandations }
 DBE2ChangeTarget >> recommandationsForGroupByClauseOn: operatorsStream [ 
 	"Do nothing on purpose, once the change target operator has been applied, the code will be fixed."
 ]
 
 { #category : #recommandations }
-DBE2ChangeTarget >> recommandationsForSelectClauseOn: aWriteStream [ 
-	self flag: #TODO
+DBE2ChangeTarget >> recommandationsForSelectClauseOn: operatorsStream [ 
+	| view column |
+	view := self sourceEntity query container
+				ifNil: [ ^ self ]. "If the query is hold by no entity, no impact"
+	view isView
+		ifFalse: [ ^ self ]. "If not hold by a view, no impact."
+	column := (view columnsToColumnReferences associations
+			detect: [ :assoc | assoc value sourceAnchor interval includesAll: self reference sourceAnchor interval ]) key.
+	(view doesNameOfColumnComesFromAlias: column)
+		ifTrue: [ ^ self ].
+	
+	operatorsStream nextPut: (DBE2EntityRename entity: column newName: self newTargetName)
 ]
 
 { #category : #recommandations }

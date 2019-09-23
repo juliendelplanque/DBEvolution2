@@ -4,7 +4,7 @@ Class {
 	#category : #'DBEvolution2-Model'
 }
 
-{ #category : #acessing }
+{ #category : #accessing }
 DBE2Reference >> belongsToGroup [
 	^ nil
 ]
@@ -15,8 +15,18 @@ DBE2Reference >> from [
 ]
 
 { #category : #testing }
+DBE2Reference >> hasQualifiedReference [
+	^ false
+]
+
+{ #category : #testing }
 DBE2Reference >> isColumnReference [
-	^ self subclassResponsibility
+	^ false
+]
+
+{ #category : #accessing }
+DBE2Reference >> qualifiedReference [
+	^ nil
 ]
 
 { #category : #accessing }

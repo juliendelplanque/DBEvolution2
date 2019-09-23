@@ -14,7 +14,7 @@ DBE2FmxSQLReference class >> wrap: aFmxSQLReference [
 		yourself
 ]
 
-{ #category : #acessing }
+{ #category : #accessing }
 DBE2FmxSQLReference >> belongsToGroup [
 	^ self wrappedReference belongsToGroup
 ]
@@ -25,8 +25,18 @@ DBE2FmxSQLReference >> from [
 ]
 
 { #category : #testing }
+DBE2FmxSQLReference >> hasQualifiedReference [
+	^ self wrappedReference qualifiedReference isNotNil
+]
+
+{ #category : #testing }
 DBE2FmxSQLReference >> isColumnReference [
 	^ self wrappedReference isColumnReference
+]
+
+{ #category : #accessing }
+DBE2FmxSQLReference >> qualifiedReference [
+	^ self wrappedReference qualifiedReference
 ]
 
 { #category : #accessing }
