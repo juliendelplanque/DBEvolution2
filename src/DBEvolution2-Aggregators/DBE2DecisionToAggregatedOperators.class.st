@@ -14,13 +14,18 @@ Class {
 }
 
 { #category : #aggregating }
+DBE2DecisionToAggregatedOperators class >> aggregate: rootOperator [
+	^ self new aggregate: rootOperator
+]
+
+{ #category : #aggregating }
 DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
 	|aggregatedOperators|
 	"1. Flatten operators as a collection and remove 'do nothing'."
 	operators := rootDecisionOperator flattened reject: #isDoNothing.
 	"2. Aggregate change target reference operators."
 	aggregatedOperators := OrderedCollection new.
-	((self operators select: #isChangeTarget) groupedBy: #sourcedBelonger) keysAndValuesDo: [ :sourcedBelonger :references |
+	((self operators select: #isChangeTarget) groupedBy: [ :operator | operator reference sourcedBelonger ]) keysAndValuesDo: [ :sourcedBelonger :references |
 		|updatedSourceCode|
 		updatedSourceCode := sourcedBelonger source applyChangeTargets: references.
 		aggregatedOperators 
