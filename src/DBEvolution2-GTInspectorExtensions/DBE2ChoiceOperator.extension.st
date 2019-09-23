@@ -23,11 +23,5 @@ DBE2ChoiceOperator >> gtRecommandationsIn: composite [
 			title: 'Recommandations';
 			display: [ 'Make your choice before accessing recommandations.'  ]  ].
 	
-	^ composite fastTable
-		title: 'Recommandations';
-		display: [ self recommandations ];
-		enableElementIndex;
-		wantsAutomaticRefresh: true;
-		column: 'Index' evaluated: [ :value :ibdex | ibdex asString ] width: 50;
-		column: 'Entity' evaluated: [ :value | GTObjectPrinter asTruncatedTextFrom: value ]
+	^ super gtRecommandationsIn: composite
 ]
