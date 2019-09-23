@@ -31,6 +31,12 @@ DBE2OperatorsFlattener >> operators: anObject [
 ]
 
 { #category : #visiting }
+DBE2OperatorsFlattener >> visitChoiceOperator: aChoiceOperator [
+	self visit: aChoiceOperator chosenRecommandation.
+	^ self operators
+]
+
+{ #category : #visiting }
 DBE2OperatorsFlattener >> visitOperator: anOperator [
 	anOperator recommandations do: [ :op | self visit: op ].
 	self operators add: anOperator.

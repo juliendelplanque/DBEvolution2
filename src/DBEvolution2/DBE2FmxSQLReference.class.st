@@ -45,6 +45,11 @@ DBE2FmxSQLReference >> sourceAnchor [
 ]
 
 { #category : #accessing }
+DBE2FmxSQLReference >> sourcedBelonger [
+	^ self from sourcedBelonger
+]
+
+{ #category : #accessing }
 DBE2FmxSQLReference >> to [
 	^ self wrappedReference to
 ]
