@@ -1,7 +1,7 @@
 Extension { #name : #DBE2Operator }
 
 { #category : #'*DBEvolution2-GTInspectorExtensions' }
-DBE2Operator >> gtEntitiesIn: composite [
+DBE2Operator >> gtRecommandationsIn: composite [
 	<gtInspectorPresentationOrder: 0>
 	^ composite fastTable
 		title: 'Recommandations';
