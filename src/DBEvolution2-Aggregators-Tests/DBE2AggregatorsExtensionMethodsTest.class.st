@@ -24,17 +24,17 @@ END;'.
 	changeTargets := { 
 		DBE2ChangeTargetMock new
 			start: 38;
-			stop: 46;
+			end: 46;
 			newTargetName: 'foo'
 			yourself.
 		DBE2ChangeTargetMock new
 			start: 48;
-			stop: 54;
+			end: 54;
 			newTargetName: 'fooCol'
 			yourself.
 		DBE2ChangeTargetMock new
 			start: 89;
-			stop: 97;
+			end: 97;
 			newTargetName: 'foo2'
 			yourself.
 		 }.

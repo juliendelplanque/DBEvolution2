@@ -16,6 +16,16 @@ DBE2ReferenceOperator class >> reference: reference [
 ]
 
 { #category : #accessing }
+DBE2ReferenceOperator >> end [
+	^ self sourceAnchor end
+]
+
+{ #category : #accessing }
+DBE2ReferenceOperator >> entity [
+	^ self reference
+]
+
+{ #category : #accessing }
 DBE2ReferenceOperator >> recommandations [
 	^ recommandations ifNil: [ recommandations := Array streamContents: [ :stream | self reference from recommandationsFor: self on: stream ] ]
 ]
@@ -500,12 +510,13 @@ DBE2ReferenceOperator >> sourceEntity [
 
 { #category : #accessing }
 DBE2ReferenceOperator >> start [
-	^ self reference start
+	^ self sourceAnchor start
 ]
 
 { #category : #accessing }
 DBE2ReferenceOperator >> stop [
-	^ self reference stop
+	self deprecated: 'Use #end instead.' transformWith: '`@receiver stop' -> '`@receiver end'.
+	^ self end
 ]
 
 { #category : #accessing }

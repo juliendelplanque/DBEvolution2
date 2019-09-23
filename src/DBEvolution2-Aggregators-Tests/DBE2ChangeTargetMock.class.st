@@ -3,10 +3,20 @@ Class {
 	#superclass : #DBE2ChangeTarget,
 	#instVars : [
 		'start',
-		'stop'
+		'end'
 	],
 	#category : #'DBEvolution2-Aggregators-Tests'
 }
+
+{ #category : #accessing }
+DBE2ChangeTargetMock >> end [
+	^ end
+]
+
+{ #category : #accessing }
+DBE2ChangeTargetMock >> end: anObject [
+	end := anObject
+]
 
 { #category : #accessing }
 DBE2ChangeTargetMock >> start [
@@ -16,14 +26,4 @@ DBE2ChangeTargetMock >> start [
 { #category : #accessing }
 DBE2ChangeTargetMock >> start: anObject [
 	start := anObject
-]
-
-{ #category : #accessing }
-DBE2ChangeTargetMock >> stop [
-	^ stop
-]
-
-{ #category : #accessing }
-DBE2ChangeTargetMock >> stop: anObject [
-	stop := anObject
 ]
