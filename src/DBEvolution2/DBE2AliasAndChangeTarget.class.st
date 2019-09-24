@@ -21,6 +21,17 @@ DBE2AliasAndChangeTarget >> acceptVisitor: aDBE2OperatorVisitor [
 	^ aDBE2OperatorVisitor visitDBE2AliasAndChangeTarget: self
 ]
 
+{ #category : #printing }
+DBE2AliasAndChangeTarget >> innerPrintOn: aStream [
+	aStream print: self sourceAnchor extractString.
+	aStream nextPutAll: ' -> '.
+	aStream nextPut: $'.
+	aStream nextPutAll: self newTargetName.
+	aStream nextPutAll: ' AS '.
+	aStream nextPutAll: self sourceAnchor extractString.
+	aStream nextPut: $'.
+]
+
 { #category : #accessing }
 DBE2AliasAndChangeTarget >> newTargetName [
 	^ newTargetName
