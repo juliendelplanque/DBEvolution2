@@ -65,7 +65,7 @@ DBE2ChangeTarget >> recommandationsForSelectClauseOn: operatorsStream [
 	(view doesNameOfColumnComesFromAlias: column)
 		ifTrue: [ ^ self ].
 	
-	operatorsStream nextPut: (DBE2EntityRename entity: column newName: self newTargetName)
+	operatorsStream nextPut: (DBE2EntityRename entity: column newName: self newTargetName) beVirtual
 ]
 
 { #category : #recommandations }

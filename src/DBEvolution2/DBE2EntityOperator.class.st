@@ -8,6 +8,11 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #setting }
+DBE2EntityOperator >> beVirtual [
+	self isVirtual: true
+]
+
 { #category : #accessing }
 DBE2EntityOperator >> entity [
 	^ entity
@@ -24,7 +29,7 @@ DBE2EntityOperator >> initialize [
 	self isVirtual: false.
 ]
 
-{ #category : #accessing }
+{ #category : #testing }
 DBE2EntityOperator >> isVirtual [
 	^ isVirtual
 ]

@@ -19,6 +19,11 @@ DBE2DoNothing >> isDoNothing [
 	^ true
 ]
 
+{ #category : #testing }
+DBE2DoNothing >> isVirtual [
+	^ true
+]
+
 { #category : #accessing }
 DBE2DoNothing >> recommandations [
 	"This object is an implementation of the null-object design-pattern.

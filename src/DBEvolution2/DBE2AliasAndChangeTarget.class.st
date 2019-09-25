@@ -21,6 +21,13 @@ DBE2AliasAndChangeTarget >> acceptVisitor: aDBE2OperatorVisitor [
 	^ aDBE2OperatorVisitor visitDBE2AliasAndChangeTarget: self
 ]
 
+{ #category : #errors }
+DBE2AliasAndChangeTarget >> errorCanNotBeAppliedForThisEntity [
+	self
+		error:
+			'This operator can not be applied on a reference held by this kind of entity.'
+]
+
 { #category : #printing }
 DBE2AliasAndChangeTarget >> innerPrintOn: aStream [
 	aStream print: self sourceAnchor extractString.
@@ -43,8 +50,43 @@ DBE2AliasAndChangeTarget >> newTargetName: anObject [
 ]
 
 { #category : #recommandations }
+DBE2AliasAndChangeTarget >> recommandationsForCheckConstraintOn: operatorsStream [
+	self errorCanNotBeAppliedForThisEntity
+]
+
+{ #category : #recommandations }
+DBE2AliasAndChangeTarget >> recommandationsForExceptClauseOn: operatorsStream [
+	self errorCanNotBeAppliedForThisEntity
+]
+
+{ #category : #recommandations }
+DBE2AliasAndChangeTarget >> recommandationsForForeignKeyConstraintOn: operatorsStream [
+	self errorCanNotBeAppliedForThisEntity
+]
+
+{ #category : #recommandations }
 DBE2AliasAndChangeTarget >> recommandationsForSelectClauseOn: operatorsStream [ 
 	"There is not recommandation to create since this operator has no impact."
+]
+
+{ #category : #recommandations }
+DBE2AliasAndChangeTarget >> recommandationsForUsingClauseOn: operatorsStream [
+	self errorCanNotBeAppliedForThisEntity
+]
+
+{ #category : #recommandations }
+DBE2AliasAndChangeTarget >> recommandationsForValuesClauseOn: operatorsStream [
+	self errorCanNotBeAppliedForThisEntity
+]
+
+{ #category : #recommandations }
+DBE2AliasAndChangeTarget >> recommandationsForWhereClauseOn: operatorsStream [
+	self errorCanNotBeAppliedForThisEntity
+]
+
+{ #category : #recommandations }
+DBE2AliasAndChangeTarget >> recommandationsForWithClauseOn: operatorsStream [
+	self errorCanNotBeAppliedForThisEntity
 ]
 
 { #category : #accessing }

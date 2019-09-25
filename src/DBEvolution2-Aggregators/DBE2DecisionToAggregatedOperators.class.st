@@ -21,8 +21,8 @@ DBE2DecisionToAggregatedOperators class >> aggregate: rootOperator [
 { #category : #aggregating }
 DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
 	|aggregatedOperators|
-	"1. Flatten operators as a collection and remove 'do nothing'."
-	operators := rootDecisionOperator flattened reject: #isDoNothing.
+	"1. Flatten operators as a collection and remove virtual operators."
+	operators := rootDecisionOperator flattened reject: #isVirtual.
 	"2. Aggregate change target reference operators."
 	aggregatedOperators := OrderedCollection new.
 	((self operators select: #isChangeTarget) groupedBy: [ :operator | operator reference sourcedBelonger ]) keysAndValuesDo: [ :sourcedBelonger :references |
