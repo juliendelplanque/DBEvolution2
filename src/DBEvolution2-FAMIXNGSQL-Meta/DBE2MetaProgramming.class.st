@@ -26,7 +26,7 @@ DBE2MetaProgramming class >> classesForEntityOperatorGeneration [
 
 { #category : #accessing }
 DBE2MetaProgramming class >> classesForReferenceOperatorGeneration [
-	^ self classesForEntityOperatorGeneration , (FmxSQLClause allSubclasses select: [ :c | c subclasses isEmpty ])
+	^ FmxSQLClause allSubclasses select: [ :c | c subclasses isEmpty ]
 ]
 
 { #category : #metaprogramming }

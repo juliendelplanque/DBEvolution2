@@ -50,11 +50,6 @@ DBE2AliasAndChangeTarget >> newTargetName: anObject [
 ]
 
 { #category : #recommandations }
-DBE2AliasAndChangeTarget >> recommandationsForCheckConstraintOn: operatorsStream [
-	self errorCanNotBeAppliedForThisEntity
-]
-
-{ #category : #recommandations }
 DBE2AliasAndChangeTarget >> recommandationsForExceptClauseOn: operatorsStream [
 	self errorCanNotBeAppliedForThisEntity
 ]
