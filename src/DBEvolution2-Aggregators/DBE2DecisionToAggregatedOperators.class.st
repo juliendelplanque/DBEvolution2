@@ -42,3 +42,25 @@ DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
 DBE2DecisionToAggregatedOperators >> operators [
 	^ operators
 ]
+
+{ #category : #sorting }
+DBE2DecisionToAggregatedOperators >> sortViewsAndStoredProceduresModifications: aCollection [ 
+	| dependencies orderedOperators viewsAndStoredProceduresToConsider operatorsToConsider |
+	viewsAndStoredProceduresToConsider := (aCollection collect: [ :operator |
+		{ operator entity . operator entity allDepending } ]) flattened asSet.
+	operatorsToConsider := viewsAndStoredProceduresToConsider collect: [ :viewOrStoredProcedure |
+		aCollection
+			detect: [ :op | op entity = viewOrStoredProcedure ]
+			ifNone: [ viewOrStoredProcedure identityModifyOperator ] ].
+	dependencies := OrderedCollection new.
+	operatorsToConsider do: [ :operator |
+		(operator entity allDependencies) do: [ :viewOrStoredProcedureDependency |
+			operatorsToConsider
+				detect: [ :anyOp | anyOp entity = viewOrStoredProcedureDependency ]
+			 	ifFound: [ :op | dependencies add: operator -> op ] ] ].
+	orderedOperators := (MalTopologicalSorting new
+					nodes: operatorsToConsider;
+					edges: dependencies from: #key to: #value;
+					run) collect: #model.
+	^ orderedOperators
+]
