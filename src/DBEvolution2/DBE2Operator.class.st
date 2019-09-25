@@ -32,6 +32,11 @@ DBE2Operator >> isDoNothing [
 	^ false
 ]
 
+{ #category : #testing }
+DBE2Operator >> isVirtual [
+	^ false
+]
+
 { #category : #printing }
 DBE2Operator >> printOn: aStream [
 	super printOn: aStream.
