@@ -11,9 +11,9 @@ Class {
 }
 
 { #category : #'instance creation' }
-DBE2EntityRename class >> entity: aFmxSQLColumn newName: aString [ 
+DBE2EntityRename class >> entity: anEntity newName: aString [ 
 	^ self new
-		entity: aFmxSQLColumn;
+		entity: anEntity;
 		newName: aString;
 		yourself
 ]
