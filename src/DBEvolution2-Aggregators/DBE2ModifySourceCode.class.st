@@ -13,6 +13,11 @@ Class {
 	#category : #'DBEvolution2-Aggregators'
 }
 
+{ #category : #aggregating }
+DBE2ModifySourceCode >> beAggregatedForStoredProcedure: aCreateStoredProcedure [
+	aCreateStoredProcedure bodySourceCode: self newSourceCode
+]
+
 { #category : #accessing }
 DBE2ModifySourceCode >> entity [
 	^ entity

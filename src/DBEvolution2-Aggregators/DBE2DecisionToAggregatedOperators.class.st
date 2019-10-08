@@ -20,22 +20,53 @@ DBE2DecisionToAggregatedOperators class >> aggregate: rootOperator [
 
 { #category : #aggregating }
 DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
-	|aggregatedOperators|
 	"1. Flatten operators as a collection and remove virtual operators."
 	operators := rootDecisionOperator flattened reject: #isVirtual.
 	"2. Aggregate change target reference operators."
+	self aggregateReferencesChangeTargetOperators.
+	"3. Converts all operators concerning the same stored procedures to a single ModifyStoredProcedure op.
+	 This is needed because one can not modify a stored procedure partially in a DBMS.
+	"
+	self convertStoredProcedureRelatedOperatorsToModify.
+]
+
+{ #category : #aggregating }
+DBE2DecisionToAggregatedOperators >> aggregateReferencesChangeTargetOperators [
+	| aggregatedOperators |
 	aggregatedOperators := OrderedCollection new.
-	((self operators select: #isChangeTarget) groupedBy: [ :operator | operator reference sourcedBelonger ]) keysAndValuesDo: [ :sourcedBelonger :references |
-		|updatedSourceCode|
-		updatedSourceCode := sourcedBelonger source applyChangeTargets: references.
-		aggregatedOperators 
-			add: (DBE2ModifySourceCode new
+	((self operators select: #isChangeTarget)
+		groupedBy: [ :operator | operator reference sourcedBelonger ])
+		keysAndValuesDo: [ :sourcedBelonger :references | 
+			| updatedSourceCode |
+			updatedSourceCode := sourcedBelonger source
+				applyChangeTargets: references.
+			aggregatedOperators
+				add:
+					(DBE2ModifySourceCode new
 						entity: sourcedBelonger;
 						newSourceCode: updatedSourceCode;
 						yourself) -> references ].
-	aggregatedOperators do: [ :assoc |
-		operators at: (operators detectIndex: [ :op | assoc value includes: op ]) put: assoc key.
-		operators := (operators reject: [ :op | assoc value includes: op ]) ]
+	aggregatedOperators
+		do: [ :assoc | 
+			operators
+				at: (operators detectIndex: [ :op | assoc value includes: op ])
+				put: assoc key.
+			operators := operators reject: [ :op | assoc value includes: op ] ]
+]
+
+{ #category : #aggregating }
+DBE2DecisionToAggregatedOperators >> convertStoredProcedureRelatedOperatorsToModify [
+	| storedProceduresRelatedOperators aggregatedOperators |
+	storedProceduresRelatedOperators := operators select: #concernsStoredProcedure.
+	aggregatedOperators := OrderedCollection new.
+	(storedProceduresRelatedOperators groupedBy: #entity)
+		keysAndValuesDo: [ :storedProcedure :operatorsToAggregate |
+			|aggregatedOperator|
+			aggregatedOperator := DBE2ModifyStoredProcedure storedProcedure: storedProcedure.
+			operatorsToAggregate do: [ :operatorToAggregate |
+				operatorToAggregate beAggregatedForStoredProcedure: aggregatedOperator ].
+			aggregatedOperators add: aggregatedOperator ].
+	operators := aggregatedOperators , (operators reject: #concernsStoredProcedure)
 ]
 
 { #category : #accessing }
