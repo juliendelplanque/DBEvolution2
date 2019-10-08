@@ -4,7 +4,10 @@ Class {
 	#instVars : [
 		'storedProcedure',
 		'bodySourceCode',
-		'storedProcedureName'
+		'storedProcedureName',
+		'returnType',
+		'parametersTypes',
+		'parameters'
 	],
 	#category : #'DBEvolution2-Aggregators'
 }
@@ -24,6 +27,36 @@ DBE2ModifyStoredProcedure >> bodySourceCode [
 { #category : #accessing }
 DBE2ModifyStoredProcedure >> bodySourceCode: anObject [
 	bodySourceCode := anObject
+]
+
+{ #category : #accessing }
+DBE2ModifyStoredProcedure >> parameters [
+	^ parameters ifNil: [ parameters := self storedProcedure parameters collect: #name ]
+]
+
+{ #category : #accessing }
+DBE2ModifyStoredProcedure >> parameters: anObject [
+	parameters := anObject
+]
+
+{ #category : #accessing }
+DBE2ModifyStoredProcedure >> parametersTypes [
+	^ parametersTypes ifNil: [ parametersTypes := self storedProcedure parameters collect: [ :p | p type name ] ]
+]
+
+{ #category : #accessing }
+DBE2ModifyStoredProcedure >> parametersTypes: anObject [
+	parametersTypes := anObject
+]
+
+{ #category : #accessing }
+DBE2ModifyStoredProcedure >> returnType [
+	^ returnType ifNil: [ returnType := self storedProcedure returnType name ]
+]
+
+{ #category : #accessing }
+DBE2ModifyStoredProcedure >> returnType: anObject [
+	returnType := anObject
 ]
 
 { #category : #accessing }

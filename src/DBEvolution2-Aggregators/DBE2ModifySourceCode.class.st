@@ -18,6 +18,11 @@ DBE2ModifySourceCode >> beAggregatedForStoredProcedure: aCreateStoredProcedure [
 	aCreateStoredProcedure bodySourceCode: self newSourceCode
 ]
 
+{ #category : #testing }
+DBE2ModifySourceCode >> concernsStoredProcedure [
+	^ self entity concernsStoredProcedure
+]
+
 { #category : #accessing }
 DBE2ModifySourceCode >> entity [
 	^ entity
