@@ -39,6 +39,11 @@ DBE2AliasAndChangeTarget >> innerPrintOn: aStream [
 	aStream nextPut: $'.
 ]
 
+{ #category : #testing }
+DBE2AliasAndChangeTarget >> isChangeTarget [
+	^ true
+]
+
 { #category : #accessing }
 DBE2AliasAndChangeTarget >> newTargetName [
 	^ newTargetName

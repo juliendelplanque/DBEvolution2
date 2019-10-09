@@ -28,6 +28,10 @@ DBE2DecisionToAggregatedOperators >> aggregate: rootDecisionOperator [
 	 This is needed because one can not modify a stored procedure partially in a DBMS.
 	"
 	self convertStoredProcedureRelatedOperatorsToModify.
+	"4. Converts all operators concerning the same view to a single ModifyView op.
+	 This is needed because one can not modify a view partially in a DBMS.
+	"
+	self convertViewRelatedOperatorsToModify.
 ]
 
 { #category : #aggregating }
@@ -59,7 +63,7 @@ DBE2DecisionToAggregatedOperators >> convertStoredProcedureRelatedOperatorsToMod
 	| storedProceduresRelatedOperators aggregatedOperators |
 	storedProceduresRelatedOperators := operators select: #concernsStoredProcedure.
 	aggregatedOperators := OrderedCollection new.
-	(storedProceduresRelatedOperators groupedBy: #entity)
+	(storedProceduresRelatedOperators groupedBy: #storedProcedureConcerned)
 		keysAndValuesDo: [ :storedProcedure :operatorsToAggregate |
 			|aggregatedOperator|
 			aggregatedOperator := DBE2ModifyStoredProcedure storedProcedure: storedProcedure.
@@ -67,6 +71,21 @@ DBE2DecisionToAggregatedOperators >> convertStoredProcedureRelatedOperatorsToMod
 				operatorToAggregate beAggregatedForStoredProcedure: aggregatedOperator ].
 			aggregatedOperators add: aggregatedOperator ].
 	operators := aggregatedOperators , (operators reject: #concernsStoredProcedure)
+]
+
+{ #category : #aggregating }
+DBE2DecisionToAggregatedOperators >> convertViewRelatedOperatorsToModify [
+	| storedProceduresRelatedOperators aggregatedOperators |
+	storedProceduresRelatedOperators := operators select: #concernsView.
+	aggregatedOperators := OrderedCollection new.
+	(storedProceduresRelatedOperators groupedBy: #viewConcerned)
+		keysAndValuesDo: [ :view :operatorsToAggregate |
+			|aggregatedOperator|
+			aggregatedOperator := DBE2ModifyView view: view.
+			operatorsToAggregate do: [ :operatorToAggregate |
+				operatorToAggregate beAggregatedForView: aggregatedOperator ].
+			aggregatedOperators add: aggregatedOperator ].
+	operators := aggregatedOperators , (operators reject: #concernsView)
 ]
 
 { #category : #accessing }

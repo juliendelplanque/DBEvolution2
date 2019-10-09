@@ -29,6 +29,11 @@ DBE2ModifyStoredProcedure >> bodySourceCode: anObject [
 	bodySourceCode := anObject
 ]
 
+{ #category : #testing }
+DBE2ModifyStoredProcedure >> concernsView [
+	^ false
+]
+
 { #category : #accessing }
 DBE2ModifyStoredProcedure >> parameters [
 	^ parameters ifNil: [ parameters := self storedProcedure parameters collect: #name ]
@@ -71,7 +76,7 @@ DBE2ModifyStoredProcedure >> storedProcedure: anObject [
 
 { #category : #accessing }
 DBE2ModifyStoredProcedure >> storedProcedureName [
-	^ storedProcedureName
+	^ storedProcedureName ifNil: [ returnType := self storedProcedure name ]
 ]
 
 { #category : #accessing }

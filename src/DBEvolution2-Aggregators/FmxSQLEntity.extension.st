@@ -4,3 +4,8 @@ Extension { #name : #FmxSQLEntity }
 FmxSQLEntity >> concernsStoredProcedure [
 	^ false
 ]
+
+{ #category : #'*DBEvolution2-Aggregators' }
+FmxSQLEntity >> concernsView [
+	^ false
+]

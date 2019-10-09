@@ -1,7 +1,7 @@
 Extension { #name : #FmxSQLLocalVariable }
 
 { #category : #'*DBEvolution2-Aggregators' }
-FmxSQLLocalVariable >> aggregateEntityRename: anEntityRename for: aCreateStoredProcedure [
+FmxSQLLocalVariable >> aggregateEntityRename: anEntityRename forStoredProcedure: aModifyStoredProcedure [
 	"Does nothing on purpose."
 	self flag: #TODO. "Check if should do something or not?"
 ]
@@ -9,4 +9,9 @@ FmxSQLLocalVariable >> aggregateEntityRename: anEntityRename for: aCreateStoredP
 { #category : #'*DBEvolution2-Aggregators' }
 FmxSQLLocalVariable >> concernsStoredProcedure [
 	^ true
+]
+
+{ #category : #'*DBEvolution2-Aggregators' }
+FmxSQLLocalVariable >> storedProcedureConcerned [
+	^ self parentBehaviouralEntity
 ]

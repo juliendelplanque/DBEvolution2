@@ -103,7 +103,7 @@ DBE2DecisionToAggregatedOperatorsTest >> buildModel [
 	self symbolResolutionForView: v3 in: model.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'model building' }
 DBE2DecisionToAggregatedOperatorsTest >> createRenameT1COperatorAndTakeDecisions [
 	| t1C firstChoice |
 	t1C := ((model allWithType: FmxSQLTable) detect: [ :t | t name = 't1' ]) columnNamed: 'c'.
@@ -154,7 +154,10 @@ DBE2DecisionToAggregatedOperatorsTest >> symbolResolutionForView: aView in: aMod
 
 { #category : #test }
 DBE2DecisionToAggregatedOperatorsTest >> testAggregate [
+	| aggregator |
+	aggregator := DBE2DecisionToAggregatedOperators new.
+	aggregator aggregate: renameT1CAsD.
+	
 
-	self flag: #toImplement.
-	self assert: false
+	1 halt.
 ]
