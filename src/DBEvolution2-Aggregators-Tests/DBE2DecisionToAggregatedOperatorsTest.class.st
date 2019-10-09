@@ -12,7 +12,7 @@ Class {
 
 { #category : #'model building' }
 DBE2DecisionToAggregatedOperatorsTest >> buildModel [
-	| t1 c t2 e s v1 v2 v3 publicNamespace |
+	| t1 t2 s v1 v2 v3 publicNamespace |
 	model := FmxSQLMooseModel new.
 	publicNamespace := FmxSQLNamespace new
 								name: 'public';
@@ -24,11 +24,10 @@ DBE2DecisionToAggregatedOperatorsTest >> buildModel [
 		mooseModel: model;
 		yourself.
 		
-	c := FmxSQLColumn new
+	FmxSQLColumn new
 		name: 'c';
 		mooseModel: model;
-		columnsContainer: t1;
-		yourself.
+		columnsContainer: t1.
 		
 	t2 := FmxSQLTable new
 		name: 't2';
@@ -36,18 +35,16 @@ DBE2DecisionToAggregatedOperatorsTest >> buildModel [
 		mooseModel: model;
 		yourself.
 		
-	e := FmxSQLColumn new
+	FmxSQLColumn new
 		name: 'e';
 		mooseModel: model;
-		columnsContainer: t2;
-		yourself.
+		columnsContainer: t2.
 	
 	FmxSQLStoredProcedure new
 			name: 'COUNT';
 			isStub: true;
 			parentNamespace: publicNamespace;
-			mooseModel: model;
-			yourself.
+			mooseModel: model.
 	
 	s := FmxSQLStoredProcedure new
 			name: 's';
@@ -70,8 +67,7 @@ DBE2DecisionToAggregatedOperatorsTest >> buildModel [
 	FmxSQLColumn new
 		name: 'c';
 		columnsContainer: v1;
-		mooseModel: model;
-		yourself.
+		mooseModel: model.
 	
 	self symbolResolutionForView: v1 in: model.
 				
@@ -84,13 +80,11 @@ DBE2DecisionToAggregatedOperatorsTest >> buildModel [
 	FmxSQLColumn new
 		name: 'c';
 		columnsContainer: v2;
-		mooseModel: model;
-		yourself.
+		mooseModel: model.
 	FmxSQLColumn new
 		name: 'e';
 		columnsContainer: v2;
-		mooseModel: model;
-		yourself.
+		mooseModel: model.
 	
 	self symbolResolutionForView: v2 in: model.			
 	
@@ -103,8 +97,7 @@ DBE2DecisionToAggregatedOperatorsTest >> buildModel [
 	FmxSQLColumn new
 		name: 'e';
 		columnsContainer: v3;
-		mooseModel: model;
-		yourself.
+		mooseModel: model.
 	
 	self symbolResolutionForView: v3 in: model.
 ]
@@ -128,8 +121,10 @@ DBE2DecisionToAggregatedOperatorsTest >> symbolResolutionForView: aView in: aMod
 	
 	visitor errorReport 
 		catchWarningsDuring: [ 
-			(PostgreSQLParser parseSelectQuery: aView source)
-				acceptVisitor: visitor ].
+			|scope|
+			scope := (PostgreSQLParser parseSelectQuery: aView source)
+				acceptVisitor: visitor.
+			aView query: scope entity query. ].
 		
 	self assert: visitor errorReport errors isEmpty
 ]
