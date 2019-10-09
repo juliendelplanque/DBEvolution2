@@ -24,6 +24,11 @@ DBE2Reference >> isColumnReference [
 	^ false
 ]
 
+{ #category : #testing }
+DBE2Reference >> isWildCardReference [
+	^ false
+]
+
 { #category : #accessing }
 DBE2Reference >> qualifiedReference [
 	^ nil

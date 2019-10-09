@@ -34,6 +34,11 @@ DBE2FmxSQLReference >> isColumnReference [
 	^ self wrappedReference isColumnReference
 ]
 
+{ #category : #testing }
+DBE2FmxSQLReference >> isWildCardReference [
+	^ self wrappedReference isWildCardReference
+]
+
 { #category : #accessing }
 DBE2FmxSQLReference >> qualifiedReference [
 	^ self wrappedReference qualifiedReference

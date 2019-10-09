@@ -1,6 +1,6 @@
 Class {
 	#name : #DBE2ChangeTargetMock,
-	#superclass : #DBE2ChangeTarget,
+	#superclass : #DBE2WildCardChangeTarget,
 	#instVars : [
 		'start',
 		'end'

@@ -66,6 +66,11 @@ DBE2EntityRename >> recommandationsForColumnOn: operatorsStream [
 							DBE2AliasAndChangeTarget reference: reference newTargetName: self newName.
 							DBE2ChangeTarget reference: reference newTargetName: self newName. }) ]
 				ifFalse: [ 
-					operatorsStream
-						nextPut: (DBE2ChangeTarget reference: reference newTargetName: self newName) ] ]
+					(reference isColumnReference and: [ reference isWildCardReference ])
+						ifTrue: [ 
+							operatorsStream
+								nextPut: (DBE2WildCardChangeTarget reference: reference newTargetName: self newName) ]
+						ifFalse: [
+							operatorsStream
+								nextPut: (DBE2ChangeTarget reference: reference newTargetName: self newName) ] ] ]
 ]
