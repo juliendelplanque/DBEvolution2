@@ -47,6 +47,11 @@ DBE2ChoiceOperator >> isChoiceMade [
 	^ self chosenRecommandation isNotNil
 ]
 
+{ #category : #testing }
+DBE2ChoiceOperator >> isChoiceOperator [
+	^ true
+]
+
 { #category : #accessing }
 DBE2ChoiceOperator >> possibleRecommandations [
 	^ possibleRecommandations

@@ -5,7 +5,8 @@ Class {
 	#name : #DBE2DecisionToAggregatedOperatorsTest,
 	#superclass : #TestCase,
 	#instVars : [
-		'model'
+		'model',
+		'renameT1CAsD'
 	],
 	#category : #'DBEvolution2-Aggregators-Tests'
 }
@@ -100,6 +101,28 @@ DBE2DecisionToAggregatedOperatorsTest >> buildModel [
 		mooseModel: model.
 	
 	self symbolResolutionForView: v3 in: model.
+]
+
+{ #category : #'as yet unclassified' }
+DBE2DecisionToAggregatedOperatorsTest >> createRenameT1COperatorAndTakeDecisions [
+	| t1C firstChoice |
+	t1C := ((model allWithType: FmxSQLTable) detect: [ :t | t name = 't1' ]) columnNamed: 'c'.
+	renameT1CAsD := DBE2EntityRename entity: t1C newName: 'd'.
+	
+	firstChoice := renameT1CAsD recommandations detect: [ :r | r isChoiceOperator ].
+	
+	firstChoice chosenRecommandation: (firstChoice possibleRecommandations detect: [ :r | r class = DBE2ChangeTarget ]).
+	
+	firstChoice recommandations first recommandations first
+		chosenRecommandation: (firstChoice recommandations first recommandations first possibleRecommandations detect: [ :r | r class = DBE2AliasAndChangeTarget ])
+]
+
+{ #category : #running }
+DBE2DecisionToAggregatedOperatorsTest >> setUp [
+	super setUp.
+	self buildModel.
+	
+	self createRenameT1COperatorAndTakeDecisions
 ]
 
 { #category : #'model building' }
