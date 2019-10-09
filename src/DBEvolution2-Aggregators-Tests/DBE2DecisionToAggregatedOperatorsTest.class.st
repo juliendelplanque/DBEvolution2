@@ -53,6 +53,10 @@ DBE2DecisionToAggregatedOperatorsTest >> buildModel [
 			BEGIN
 			RETURN SELECT COUNT(*) FROM t1 WHERE t1.c > 5;
 			END;';
+			returnType: (FmxSQLType new
+								name: 'whatever';
+								mooseModel: model;
+								yourself);
 			parentNamespace: publicNamespace;
 			mooseModel: model;
 			yourself.
@@ -154,10 +158,30 @@ DBE2DecisionToAggregatedOperatorsTest >> symbolResolutionForView: aView in: aMod
 
 { #category : #test }
 DBE2DecisionToAggregatedOperatorsTest >> testAggregate [
-	| aggregator |
+	| aggregator rename |
 	aggregator := DBE2DecisionToAggregatedOperators new.
 	aggregator aggregate: renameT1CAsD.
 	
-
-	1 halt.
+	self assert: aggregator operators size equals: 4.
+	self assert: (aggregator operators includes: (DBE2ModifyView new
+																	view: ((model allWithType: FmxSQLView) detect: [ :v | v name = 'v1' ]);
+																	queryString: 'SELECT t1.d FROM t1 WHERE t1.d = 1';
+																	yourself)).
+	self assert: (aggregator operators includes: (DBE2ModifyView new
+																	view: ((model allWithType: FmxSQLView) detect: [ :v | v name = 'v2' ]);
+																	queryString: 'SELECT v1.d, t2.e FROM v1, t2';
+																	yourself)).
+	self assert: (aggregator operators includes: (DBE2ModifyStoredProcedure new
+																	storedProcedure: ((model allWithType: FmxSQLStoredProcedure) detect: [ :v | v name = 's' ]);
+																	bodySourceCode: '
+			BEGIN
+			RETURN SELECT COUNT(*) FROM t1 WHERE t1.d > 5;
+			END;';
+																	yourself)).
+																	
+	rename := aggregator operators detect: [ :op | op class = DBE2EntityRename ].
+	
+	self assert: rename entity class equals: FmxSQLColumn.
+	self assert: rename entity name equals: 'c'.
+	self assert: rename newName equals: 'd'
 ]

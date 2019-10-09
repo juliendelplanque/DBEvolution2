@@ -19,6 +19,22 @@ DBE2ModifyStoredProcedure class >> storedProcedure: storedProcedure [
 		yourself
 ]
 
+{ #category : #comparing }
+DBE2ModifyStoredProcedure >> = anObject [
+	"Answer whether the receiver and anObject represent the same object."
+
+	self == anObject
+		ifTrue: [ ^ true ].
+	self class = anObject class
+		ifFalse: [ ^ false ].
+	^ self bodySourceCode = anObject bodySourceCode
+		and: [ self parameters = anObject parameters
+				and: [ self parametersTypes = anObject parametersTypes
+						and: [ self returnType = anObject returnType
+								and: [ self storedProcedure = anObject storedProcedure
+										and: [ self storedProcedureName = anObject storedProcedureName ] ] ] ] ]
+]
+
 { #category : #accessing }
 DBE2ModifyStoredProcedure >> bodySourceCode [
 	^ bodySourceCode
@@ -32,6 +48,20 @@ DBE2ModifyStoredProcedure >> bodySourceCode: anObject [
 { #category : #testing }
 DBE2ModifyStoredProcedure >> concernsView [
 	^ false
+]
+
+{ #category : #comparing }
+DBE2ModifyStoredProcedure >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ bodySourceCode hash
+		bitXor:
+			(parameters hash
+				bitXor:
+					(parametersTypes hash
+						bitXor:
+							(returnType hash
+								bitXor: (storedProcedure hash bitXor: storedProcedureName hash))))
 ]
 
 { #category : #accessing }

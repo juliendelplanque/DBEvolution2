@@ -16,14 +16,33 @@ DBE2ModifyView class >> view: view [
 		yourself
 ]
 
+{ #category : #comparing }
+DBE2ModifyView >> = anObject [
+	"Answer whether the receiver and anObject represent the same object."
+
+	self == anObject
+		ifTrue: [ ^ true ].
+	self class = anObject class
+		ifFalse: [ ^ false ].
+	^ self viewName = anObject viewName
+		and: [ self queryString = anObject queryString and: [ self view = anObject view ] ]
+]
+
 { #category : #testing }
 DBE2ModifyView >> concernsStoredProcedure [
 	^ false
 ]
 
+{ #category : #comparing }
+DBE2ModifyView >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ viewName hash bitXor: (queryString hash bitXor: view hash)
+]
+
 { #category : #accessing }
 DBE2ModifyView >> queryString [
-	^ queryString
+	^ queryString ifNil: [ queryString := self view query source ]
 ]
 
 { #category : #accessing }
