@@ -18,6 +18,14 @@ DBE2DDL >> generateSQLOn: aStream [
 	aStream nextPutAll: (self queriesTemplate format: formatDict)
 ]
 
+{ #category : #printing }
+DBE2DDL >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPut: $(.
+	self generateSQLOn: aStream.
+	aStream nextPut: $)
+]
+
 { #category : #template }
 DBE2DDL >> queriesTemplate [
 	"Returns a string which is a template to generate SQL queries implementing the operator."

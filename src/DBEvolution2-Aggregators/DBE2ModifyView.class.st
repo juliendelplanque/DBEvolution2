@@ -29,12 +29,12 @@ DBE2ModifyView >> = anObject [
 ]
 
 { #category : #converting }
-DBE2ModifyView >> asCreate [
+DBE2ModifyView >> asCreateDDL [
 	^ DBE2DDLAddView name: self viewName query: self queryString
 ]
 
 { #category : #converting }
-DBE2ModifyView >> asRemove [
+DBE2ModifyView >> asRemoveDDL [
 	^ DBE2DDLRemoveView name: self view name
 ]
 

@@ -7,15 +7,22 @@ Class {
 	#category : #'DBEvolution2-Scheduler'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #api }
+DBE2Scheduler class >> schedule: collectionOfOperators [
+	^ self new
+		operators: collectionOfOperators;
+		schedule
+]
+
+{ #category : #converting }
 DBE2Scheduler >> convertModifyOperatorsToDeleteCreate [
 	| modifyOperators |
 	modifyOperators := self operators select: #isModifyEntityOperator.
 	modifyOperators := self sortViewsAndStoredProceduresModifications: modifyOperators.
-	self operators:
-		(modifyOperators reversed collect: #asRemove) ,
-		(self operators reject: #isModifyEntityOperator) ,
-		(modifyOperators collect: #asCreate)
+	^ DBE2Patch operators:
+		(modifyOperators reversed collect: #asRemoveDDL) ,
+		(self operators reject: #isModifyEntityOperator thenCollect: #asDDL),
+		(modifyOperators collect: #asCreateDDL)
 ]
 
 { #category : #accessing }
@@ -26,6 +33,11 @@ DBE2Scheduler >> operators [
 { #category : #accessing }
 DBE2Scheduler >> operators: anObject [
 	operators := anObject
+]
+
+{ #category : #api }
+DBE2Scheduler >> schedule [
+	^ self convertModifyOperatorsToDeleteCreate
 ]
 
 { #category : #sorting }
