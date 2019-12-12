@@ -40,9 +40,10 @@ DBE2Patch >> generateSQLOn: aStream [
 			aStream nextPutAll: 'BEGIN;'.
 			aStream nextPutAll: Smalltalk os lineEnding ].
 	
-	self operators
-		do: [ :operator | operator generateSQLOn: aStream ]
-		separatedBy: [ aStream nextPutAll: Smalltalk os lineEnding ].
+	self operators do: [ :operator | 
+		operator generateSQLOn: aStream.
+		aStream nextPutAll: Smalltalk os lineEnding ].
+	
 	
 	self generateInTransaction
 		ifFalse: [ ^ self ].

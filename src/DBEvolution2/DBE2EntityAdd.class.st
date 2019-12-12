@@ -16,6 +16,13 @@ DBE2EntityAdd >> acceptVisitor: anOperatorVisitor [
 	^ anOperatorVisitor visitEntityAdd: self
 ]
 
+{ #category : #converting }
+DBE2EntityAdd >> asAddNamespaceDDL [
+	^ DBE2DDLAddNamespace new
+		namespaceName: self entity name;
+		yourself
+]
+
 { #category : #accessing }
 DBE2EntityAdd >> container [
 	^ container
@@ -31,4 +38,11 @@ DBE2EntityAdd >> recommandationsForColumnOn: operatorsStream [
 	self flag: #TODO. "Inheritance is not managed yet. Need to think if important or not."
 	self flag: #TODO. "The way wildcard references are modelled in the meta-model is probably not optimal to do this task."
 	self container 
+]
+
+{ #category : #recommandations }
+DBE2EntityAdd >> recommandationsForNamespaceOn: operatorsStream [
+	"Adding a namespace has no impact.
+	 No recommandations needs to be generated.
+	"
 ]
