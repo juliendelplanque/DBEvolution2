@@ -24,6 +24,12 @@ DBE2EntityMove >> acceptVisitor: anOperatorVisitor [
 	^ anOperatorVisitor visitEntityMove: self
 ]
 
+{ #category : #references }
+DBE2EntityMove >> incomingReferencesForView [
+	self flag: #TODO.
+	^ #()
+]
+
 { #category : #accessing }
 DBE2EntityMove >> newContainer [
 	^ newContainer
@@ -44,4 +50,9 @@ DBE2EntityMove >> recommandationsForTableOn: operatorsStream [
 					operatorsStream nextPut: (DBE2ChangeTarget reference: ref newTargetName: self newContainer name) ] ] ].
 		
 	self flag: #TODO; halt. "What about entities that were in the same old namespace? the qualified name was maybe not used..."
+]
+
+{ #category : #recommandations }
+DBE2EntityMove >> recommandationsForViewOn: operatorsStream [
+	self flag: #TODO
 ]
