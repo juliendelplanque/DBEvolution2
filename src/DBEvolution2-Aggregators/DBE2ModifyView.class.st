@@ -28,9 +28,24 @@ DBE2ModifyView >> = anObject [
 		and: [ self queryString = anObject queryString and: [ self view = anObject view ] ]
 ]
 
+{ #category : #converting }
+DBE2ModifyView >> asCreate [
+	^ DBE2DDLAddView name: self viewName query: self queryString
+]
+
+{ #category : #converting }
+DBE2ModifyView >> asRemove [
+	^ DBE2DDLRemoveView name: self view name
+]
+
 { #category : #testing }
 DBE2ModifyView >> concernsStoredProcedure [
 	^ false
+]
+
+{ #category : #accessing }
+DBE2ModifyView >> entity [
+	^ self view
 ]
 
 { #category : #comparing }

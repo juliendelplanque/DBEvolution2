@@ -7,6 +7,13 @@ Class {
 	#category : #'DBEvolution2-DDL'
 }
 
+{ #category : #'instance creation' }
+DBE2DDLRemoveView class >> name: aString [ 
+	^ self new
+		viewName: aString;
+		yourself
+]
+
 { #category : #template }
 DBE2DDLRemoveView >> queriesTemplate [
 	^ 'DROP VIEW "{viewName}" RESTRICT;'

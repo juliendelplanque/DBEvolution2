@@ -50,6 +50,11 @@ DBE2ModifyStoredProcedure >> concernsView [
 	^ false
 ]
 
+{ #category : #accessing }
+DBE2ModifyStoredProcedure >> entity [
+	^ self storedProcedure
+]
+
 { #category : #comparing }
 DBE2ModifyStoredProcedure >> hash [
 	"Answer an integer value that is related to the identity of the receiver."

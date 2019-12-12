@@ -1,6 +1,9 @@
 Class {
 	#name : #DBE2Scheduler,
 	#superclass : #Object,
+	#instVars : [
+		'operators'
+	],
 	#category : #'DBEvolution2-Scheduler'
 }
 
@@ -13,6 +16,16 @@ DBE2Scheduler >> convertModifyOperatorsToDeleteCreate [
 		(modifyOperators reversed collect: #asRemove) ,
 		(self operators reject: #isModifyEntityOperator) ,
 		(modifyOperators collect: #asCreate)
+]
+
+{ #category : #accessing }
+DBE2Scheduler >> operators [
+	^ operators
+]
+
+{ #category : #accessing }
+DBE2Scheduler >> operators: anObject [
+	operators := anObject
 ]
 
 { #category : #sorting }
