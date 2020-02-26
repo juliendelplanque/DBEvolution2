@@ -26,7 +26,8 @@ DBE2MetaProgramming class >> classesForEntityOperatorGeneration [
 
 { #category : #accessing }
 DBE2MetaProgramming class >> classesForReferenceOperatorGeneration [
-	^ FmxSQLClause allSubclasses select: [ :c | c subclasses isEmpty ]
+	^ (FmxSQLClause allSubclasses select: [ :c | c subclasses isEmpty ]) ,
+		(FmxSQLConstraint allSubclasses select: [ :c | c subclasses isEmpty ])
 ]
 
 { #category : #metaprogramming }
@@ -60,6 +61,7 @@ DBE2MetaProgramming class >> generateOperatorAndEntityIncomingReferencesMethods 
 
 { #category : #metaprogramming }
 DBE2MetaProgramming class >> generateReferenceOperatorAndEntityRecommandationMethods [
+	<script>
 	| template templateForOperator |
 	template := self recommandationsForMethodTemplate.
 	templateForOperator := self recommandationsForClassMethodTemplate.

@@ -31,6 +31,19 @@ DBE2ReferenceOperator >> recommandations [
 ]
 
 { #category : #recommandations }
+DBE2ReferenceOperator >> recommandationsForCheckConstraint [
+	<generated>
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForCheckConstraintOn: operatorsStream ]
+]
+
+{ #category : #recommandations }
+DBE2ReferenceOperator >> recommandationsForCheckConstraintOn: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2ReferenceOperator >> recommandationsForExceptClause [
 	<generated>
 	^ Array
@@ -148,6 +161,19 @@ DBE2ReferenceOperator >> recommandationsForLimitClauseOn: operatorsStream [
 ]
 
 { #category : #recommandations }
+DBE2ReferenceOperator >> recommandationsForNotNullConstraint [
+	<generated>
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForNotNullConstraintOn: operatorsStream ]
+]
+
+{ #category : #recommandations }
+DBE2ReferenceOperator >> recommandationsForNotNullConstraintOn: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
 DBE2ReferenceOperator >> recommandationsForOnConflictClause [
 	<generated>
 	^ Array
@@ -260,6 +286,19 @@ DBE2ReferenceOperator >> recommandationsForUnionClause [
 
 { #category : #recommandations }
 DBE2ReferenceOperator >> recommandationsForUnionClauseOn: operatorsStream [
+	<generated>
+	self subclassResponsibility
+]
+
+{ #category : #recommandations }
+DBE2ReferenceOperator >> recommandationsForUniqueConstraint [
+	<generated>
+	^ Array
+		streamContents: [ :operatorsStream | self recommandationsForUniqueConstraintOn: operatorsStream ]
+]
+
+{ #category : #recommandations }
+DBE2ReferenceOperator >> recommandationsForUniqueConstraintOn: operatorsStream [
 	<generated>
 	self subclassResponsibility
 ]
