@@ -32,6 +32,8 @@ DBE2OperatorsFlattener >> operators: anObject [
 
 { #category : #visiting }
 DBE2OperatorsFlattener >> visitChoiceOperator: aChoiceOperator [
+	aChoiceOperator isChoiceMade
+		ifFalse: [ self error: 'Some decisions are not taken.' ].
 	self visit: aChoiceOperator chosenRecommandation.
 	^ self operators
 ]
