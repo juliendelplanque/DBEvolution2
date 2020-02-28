@@ -11,6 +11,18 @@ Class {
 	#category : #'DBEvolution2-DDL'
 }
 
+{ #category : #'instance creation' }
+DBE2DDLAddTrigger class >> triggerName: triggerName whenName: whenName firingActionName: firingActionName tableName: tableName storedProcedureName: storedProcedureName [
+	<generated>
+	^ self new
+		triggerName: triggerName;
+		whenName: whenName;
+		firingActionName: firingActionName;
+		tableName: tableName;
+		storedProcedureName: storedProcedureName;
+		yourself
+]
+
 { #category : #accessing }
 DBE2DDLAddTrigger >> firingActionName [
 	^ firingActionName

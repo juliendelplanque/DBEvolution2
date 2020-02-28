@@ -8,6 +8,15 @@ Class {
 	#category : #'DBEvolution2-DDL'
 }
 
+{ #category : #'instance creation' }
+DBE2DDLRemoveTrigger class >> triggerName: triggerName tableName: tableName [
+	<generated>
+	^ self new
+		triggerName: triggerName;
+		tableName: tableName;
+		yourself
+]
+
 { #category : #template }
 DBE2DDLRemoveTrigger >> queriesTemplate [
 	^ 'DROP TRIGGER "{triggerName}" ON "{tableName}" RESTRICT;'
