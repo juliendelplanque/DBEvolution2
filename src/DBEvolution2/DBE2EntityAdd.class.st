@@ -16,13 +16,6 @@ DBE2EntityAdd >> acceptVisitor: anOperatorVisitor [
 	^ anOperatorVisitor visitEntityAdd: self
 ]
 
-{ #category : #converting }
-DBE2EntityAdd >> asAddNamespaceDDL [
-	^ DBE2DDLAddNamespace new
-		namespaceName: self entity name;
-		yourself
-]
-
 { #category : #accessing }
 DBE2EntityAdd >> container [
 	^ container

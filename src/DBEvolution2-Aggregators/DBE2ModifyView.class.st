@@ -57,7 +57,7 @@ DBE2ModifyView >> hash [
 
 { #category : #accessing }
 DBE2ModifyView >> queryString [
-	^ queryString ifNil: [ queryString := self view query source ]
+	^ queryString ifNil: [ queryString := self view query sourceText ]
 ]
 
 { #category : #accessing }

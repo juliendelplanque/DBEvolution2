@@ -41,6 +41,18 @@ DBE2EntityMove >> newContainer: anObject [
 ]
 
 { #category : #recommandations }
+DBE2EntityMove >> recommandationsForColumnOn: operatorsStream [
+	self incomingReferencesForColumn
+		do: [ :ref |
+			operatorsStream nextPut: (DBE2MoveReferenceSource reference: ref newSourceContainer: self newContainer) ]
+]
+
+{ #category : #recommandations }
+DBE2EntityMove >> recommandationsForNotNullConstraintOn: operatorsStream [
+	self flag: #TODO
+]
+
+{ #category : #recommandations }
 DBE2EntityMove >> recommandationsForTableOn: operatorsStream [
 	self incomingReferences do: [ :reference |
 		reference qualifiedReference ifNotNil: [ :qualifiedReference |

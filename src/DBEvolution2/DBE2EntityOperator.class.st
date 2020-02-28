@@ -8,6 +8,13 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
+{ #category : #'instance creation' }
+DBE2EntityOperator class >> entity: entity [
+	^ self new
+		entity: entity;
+		yourself
+]
+
 { #category : #setting }
 DBE2EntityOperator >> beVirtual [
 	self isVirtual: true

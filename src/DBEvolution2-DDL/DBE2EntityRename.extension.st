@@ -8,3 +8,8 @@ DBE2EntityRename >> asRenameColumnDDL [
 		newColumnName: self newName;
 		yourself
 ]
+
+{ #category : #'*DBEvolution2-DDL' }
+DBE2EntityRename >> ddlForColumn: aColumn [
+	^ self asRenameColumnDDL
+]

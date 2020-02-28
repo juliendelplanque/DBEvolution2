@@ -67,6 +67,11 @@ DBE2OperatorVisitor >> visitHumanIntervention: aHumanIntervention [
 ]
 
 { #category : #visiting }
+DBE2OperatorVisitor >> visitMoveReferenceSource: aMoveReferenceSource [
+	^ self visitOperator: aMoveReferenceSource
+]
+
+{ #category : #visiting }
 DBE2OperatorVisitor >> visitOperator: anOperator [
 	^ anOperator recommandations collect: [ :recommandation | self visit: recommandation ]
 ]

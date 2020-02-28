@@ -7,13 +7,6 @@ Class {
 	#category : #'DBEvolution2-Core'
 }
 
-{ #category : #'instance creation' }
-DBE2DelegatingRecommandations class >> entity: entity [
-	^ self new
-		entity: entity;
-		yourself
-]
-
 { #category : #accessing }
 DBE2DelegatingRecommandations >> incomingReferences [
 	^ self entity incomingReferencesFor: self
