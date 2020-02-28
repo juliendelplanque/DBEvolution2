@@ -18,7 +18,8 @@ BaselineOfDBEvolution2 >> baseline: spec [
 				package: 'DBEvolution2-Aggregators' with: [ spec requires: #('DBEvolution2') ];
 				package: 'DBEvolution2-Aggregators-Tests' with: [ spec requires: #('DBEvolution2-Aggregators') ];
 				package: 'DBEvolution2-FAMIXNGSQL' with: [ spec requires: #('DBEvolution2' 'FAMIXNGSQL') ];
-				package: 'DBEvolution2-FAMIXNGSQL-Meta' with: [ spec requires: #('PharoCodeGenerator' 'FAMIXNGSQL') ].
+				package: 'DBEvolution2-FAMIXNGSQL-Meta' with: [ spec requires: #('PharoCodeGenerator' 'FAMIXNGSQL') ];
+				package: 'DBEvolution2-Scheduler' with: [ spec requires: #('DBEvolution2' 'FAMIXNGSQL' 'DBEvolution2-Aggregators') ].
 				
 			spec baseline: 'TypedSlot' with: [ 
 				spec repository: 'github://juliendelplanque/TypedSlot:v1.x.x/src' ].
