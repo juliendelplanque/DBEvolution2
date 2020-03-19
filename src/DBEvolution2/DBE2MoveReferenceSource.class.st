@@ -63,6 +63,11 @@ DBE2MoveReferenceSource >> recommandationsForFromClauseOn: operatorsStream [
 ]
 
 { #category : #recommandations }
+DBE2MoveReferenceSource >> recommandationsForGroupByClauseOn: operatorsStream [ 
+	operatorsStream nextPut: (DBE2HumanIntervention entity: self sourceEntity)
+]
+
+{ #category : #recommandations }
 DBE2MoveReferenceSource >> recommandationsForNotNullConstraintOn: operatorsStream [
 	self moveSourceEntityToNewSourceContainerOn: operatorsStream
 ]
@@ -89,4 +94,9 @@ DBE2MoveReferenceSource >> recommandationsForUniqueConstraintOn: operatorsStream
 { #category : #recommandations }
 DBE2MoveReferenceSource >> recommandationsForWhereClauseOn: operatorsStream [
 	operatorsStream nextPut: (DBE2HumanIntervention entity: self sourceEntity)
+]
+
+{ #category : #accessing }
+DBE2MoveReferenceSource >> sourceCodeChangeAsText [
+	^ 'No code change to show here.' asText
 ]

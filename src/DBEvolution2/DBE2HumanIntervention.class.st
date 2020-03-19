@@ -13,6 +13,11 @@ DBE2HumanIntervention >> acceptVisitor: anOperatorVisitor [
 	^ anOperatorVisitor visitHumanIntervention: self
 ]
 
+{ #category : #testing }
+DBE2HumanIntervention >> hasChoiceToMake [
+	^ true
+]
+
 { #category : #accessing }
 DBE2HumanIntervention >> recommandations [
 	"We consider that once the human modified the source code manually, no more operators are needed.
