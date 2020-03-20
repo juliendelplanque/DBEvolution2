@@ -59,7 +59,7 @@ DBE2MoveReferenceSource >> recommandationsForForeignKeyConstraintOn: operatorsSt
 
 { #category : #recommandations }
 DBE2MoveReferenceSource >> recommandationsForFromClauseOn: operatorsStream [ 
-	operatorsStream nextPut: (DBE2HumanIntervention entity: self sourceEntity)
+	operatorsStream nextPut: (DBE2HumanIntervention entity: self sourceEntity sourcedBelonger startPosition: self reference start endPosition: self reference stop)
 ]
 
 { #category : #recommandations }

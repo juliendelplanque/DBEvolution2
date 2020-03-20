@@ -55,6 +55,16 @@ DBE2FmxSQLReference >> sourcedBelonger [
 ]
 
 { #category : #accessing }
+DBE2FmxSQLReference >> start [
+	^ self wrappedReference start
+]
+
+{ #category : #accessing }
+DBE2FmxSQLReference >> stop [
+	^ self wrappedReference stop
+]
+
+{ #category : #accessing }
 DBE2FmxSQLReference >> to [
 	^ self wrappedReference to
 ]

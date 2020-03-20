@@ -10,5 +10,6 @@ DBE2Operator >> gtRecommandationsIn: composite [
 		wantsAutomaticRefresh: true;
 		column: 'Index' evaluated: [ :value :index | index asString ] width: 50;
 		column: 'Entity' evaluated: [ :value | GTObjectPrinter asTruncatedTextFrom: value ] width: 400;
-		column: 'Requires human intervention' evaluated: [ :value | GTObjectPrinter asTruncatedTextFrom: value hasChoiceToMake ]
+		column: 'Requires human intervention' evaluated: [ :value | GTObjectPrinter asTruncatedTextFrom: value hasChoiceToMake ];
+		yourself
 ]
